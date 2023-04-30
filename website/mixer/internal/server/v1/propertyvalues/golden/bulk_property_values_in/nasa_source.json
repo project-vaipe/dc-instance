@@ -1,0 +1,41 @@
+{
+  "data": [
+    {
+      "node": "dc/s/UsNationalAeronauticsAndSpaceAdministrationNasa",
+      "values": [
+        {
+          "name": "NEX-DCP30",
+          "types": [
+            "Dataset"
+          ],
+          "dcid": "dc/d/UsNationalAeronauticsAndSpaceAdministrationNasa_Nex-dcp30",
+          "provenanceId": "dc/base/GeneratedGraphs"
+        },
+        {
+          "name": "NEX-GDDP",
+          "types": [
+            "Dataset"
+          ],
+          "dcid": "dc/d/UsNationalAeronauticsAndSpaceAdministrationNasa_Nex-gddp",
+          "provenanceId": "dc/base/GeneratedGraphs"
+        },
+        {
+          "name": "NEX-GDDP-CMIP6",
+          "types": [
+            "Dataset"
+          ],
+          "dcid": "dc/d/UsNationalAeronauticsAndSpaceAdministrationNasa_Nex-gddp-cmip6",
+          "provenanceId": "dc/base/GeneratedGraphs"
+        },
+        {
+          "name": "VIIRS Active Fire Data",
+          "types": [
+            "Dataset"
+          ],
+          "dcid": "dc/d/UsNationalAeronauticsAndSpaceAdministrationNasa_ViirsActiveFireData",
+          "provenanceId": "dc/base/GeneratedGraphs"
+        }
+      ]
+    }
+  ]
+}

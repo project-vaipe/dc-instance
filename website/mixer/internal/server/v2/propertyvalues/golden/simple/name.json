@@ -1,0 +1,28 @@
+{
+  "data": {
+    "bio/hs": {
+      "arcs": {
+        "name": {
+          "nodes": [
+            {
+              "provenanceId": "dc/base/Species",
+              "value": "HomoSapiens"
+            }
+          ]
+        }
+      }
+    },
+    "geoId/06": {
+      "arcs": {
+        "name": {
+          "nodes": [
+            {
+              "provenanceId": "dc/base/WikidataOtherIdGeos",
+              "value": "California"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

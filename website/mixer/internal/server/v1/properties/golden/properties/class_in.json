@@ -1,0 +1,9 @@
+{
+  "node": "Class",
+  "properties": [
+    "domainIncludes",
+    "rangeIncludes",
+    "subClassOf",
+    "typeOf"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "date": "2023-02",
+  "value": 5936000,
+  "metadata": {
+    "import_name": "BLS_CPS",
+    "provenance_url": "https://www.bls.gov/cps/",
+    "measurement_method": "BLSSeasonallyAdjusted",
+    "observation_period": "P1M"
+  }
+}

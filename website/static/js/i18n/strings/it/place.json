@@ -1,0 +1,203 @@
+{
+  "alert-no_data_for_place": {
+    "defaultMessage": "Spiacenti, nessun dato disponibile in merito a: {placeName}"
+  },
+  "chart_clause-other_placeType": {
+    "defaultMessage": "{chartTitle}: {placeType} differenti"
+  },
+  "chart_clause-places_that_contain_place": {
+    "defaultMessage": "{chartTitle}: luoghi con {placeName}"
+  },
+  "chart_clause-places_within_place": {
+    "defaultMessage": "{chartTitle}: luoghi in {placeName}"
+  },
+  "chart_clause-placetype_near_place": {
+    "defaultMessage": "{chartTitle}: {placeType} nei pressi di {placeName}"
+  },
+  "chart_clause-rankings_in_place": {
+    "defaultMessage": "{variable}: rankings in {placeName}"
+  },
+  "chart_clause-variable_in_place": {
+    "defaultMessage": "{variable} in: {placeName}"
+  },
+  "chart_metadata-dotted_line_explanation": {
+    "defaultMessage": "(la linea tratteggiata indica dati mancanti)"
+  },
+  "chart_metadata-explore_more": {
+    "defaultMessage": "Scopri di più "
+  },
+  "chart_metadata-export": {
+    "defaultMessage": "Esporta"
+  },
+  "chart_metadata-feedback": {
+    "defaultMessage": "Feedback"
+  },
+  "chart_metadata-provenance": {
+    "defaultMessage": "Dati di {sources}"
+  },
+  "child_places_menu-places_in_place": {
+    "defaultMessage": "Luoghi in: {placeName}"
+  },
+  "embed_citation": {
+    "defaultMessage": "Dati di {sources} tramite Data Commons"
+  },
+  "embed_download_chart_link": {
+    "defaultMessage": "Scarica l'immagine del grafico"
+  },
+  "embed_download_csv_link": {
+    "defaultMessage": "Scarica i dati in formato CSV"
+  },
+  "embed_export_chart_link": {
+    "defaultMessage": "Esporta questo grafico"
+  },
+  "header-overview": {
+    "defaultMessage": "Panoramica"
+  },
+  "link-return_to_overview": {
+    "defaultMessage": "Torna alla panoramica"
+  },
+  "more_charts": {
+    "defaultMessage": "Altri grafici"
+  },
+  "place_breadcrumb": {
+    "defaultMessage": "{placeType} in {placeName}"
+  },
+  "place_page_ranking_table-ranking_in": {
+    "defaultMessage": "Posizioni (in)"
+  },
+  "place_page_ranking_table-ranking_value": {
+    "defaultMessage": "{rank} di {total}"
+  },
+  "plural_administrative_area": {
+    "defaultMessage": "Aree amministrative"
+  },
+  "plural_administrative_area_level": {
+    "defaultMessage": "Posizioni {level} area amministrativa"
+  },
+  "plural_borough": {
+    "defaultMessage": "Distretti"
+  },
+  "plural_city": {
+    "defaultMessage": "Città"
+  },
+  "plural_country": {
+    "defaultMessage": "Paesi"
+  },
+  "plural_county": {
+    "defaultMessage": "Contee"
+  },
+  "plural_eurostat_nuts": {
+    "defaultMessage": "Luoghi Eurostat NUTS {level}"
+  },
+  "plural_neighborhood": {
+    "defaultMessage": "Quartieri"
+  },
+  "plural_places": {
+    "defaultMessage": "Luoghi"
+  },
+  "plural_state": {
+    "defaultMessage": "Stati"
+  },
+  "plural_town": {
+    "defaultMessage": "Città"
+  },
+  "plural_village": {
+    "defaultMessage": "Villaggi"
+  },
+  "plural_zip_codes": {
+    "defaultMessage": "Codici postali"
+  },
+  "ranking-document_title": {
+    "defaultMessage": "Classifica per {statVar} - {pluralPlaceType} in {placeName}"
+  },
+  "ranking-loading": {
+    "defaultMessage": "Caricamento in corso…"
+  },
+  "ranking-no_data": {
+    "defaultMessage": "Non sono disponibili dati relativi al posizionamento."
+  },
+  "ranking-page_title": {
+    "defaultMessage": "Classifica per {statVar}"
+  },
+  "ranking-sort_bottom": {
+    "defaultMessage": "Mostra ultime {rankSize} posizioni"
+  },
+  "ranking-sort_top": {
+    "defaultMessage": "Mostra prime {rankSize} posizioni"
+  },
+  "ranking-subtitle_all": {
+    "defaultMessage": "{pluralPlaceType} in {placeName} (tutti i valori)"
+  },
+  "ranking-subtitle_all_percapita": {
+    "defaultMessage": "{pluralPlaceType} in {placeName}, pro capite (tutti i valori)"
+  },
+  "ranking-subtitle_bottom": {
+    "defaultMessage": "{rankSize} {pluralPlaceType} con il posizionamento più basso in {placeName}"
+  },
+  "ranking-subtitle_bottom_percapita": {
+    "defaultMessage": "{rankSize} {pluralPlaceType} con il posizionamento più basso in {placeName}, pro capite"
+  },
+  "ranking-subtitle_none": {
+    "defaultMessage": "{pluralPlaceType} in {placeName}"
+  },
+  "ranking-subtitle_none_percapita": {
+    "defaultMessage": "{pluralPlaceType} in {placeName}, pro capite"
+  },
+  "ranking-subtitle_top": {
+    "defaultMessage": "{rankSize} {pluralPlaceType} con il posizionamento più alto in {placeName}"
+  },
+  "ranking-subtitle_top_percapita": {
+    "defaultMessage": "{rankSize} {pluralPlaceType} con il posizionamento più alto in {placeName}, pro capite"
+  },
+  "ranking_table-header_rank": {
+    "defaultMessage": "Posizione"
+  },
+  "ranking_table-header_value": {
+    "defaultMessage": "Valore"
+  },
+  "search_bar_placeholder-search_again": {
+    "defaultMessage": "Cerca un altro luogo"
+  },
+  "singular_administrative_area": {
+    "defaultMessage": "Area amministrativa"
+  },
+  "singular_administrative_area_level": {
+    "defaultMessage": "Luogo dell'area amministrativa {level}"
+  },
+  "singular_borough": {
+    "defaultMessage": "Distretto"
+  },
+  "singular_city": {
+    "defaultMessage": "Città"
+  },
+  "singular_country": {
+    "defaultMessage": "Paese"
+  },
+  "singular_county": {
+    "defaultMessage": "Contea"
+  },
+  "singular_eurostat_nuts": {
+    "defaultMessage": "Luogo Eurostat NUTS {level}"
+  },
+  "singular_neighborhood": {
+    "defaultMessage": "Quartiere"
+  },
+  "singular_place": {
+    "defaultMessage": "Luogo"
+  },
+  "singular_state": {
+    "defaultMessage": "Stato"
+  },
+  "singular_town": {
+    "defaultMessage": "Città"
+  },
+  "singular_village": {
+    "defaultMessage": "Villaggio"
+  },
+  "singular_zip_code": {
+    "defaultMessage": "Codice postale"
+  },
+  "the_world": {
+    "defaultMessage": "nel mondo"
+  }
+}
