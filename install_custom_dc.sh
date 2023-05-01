@@ -79,7 +79,7 @@ ROOT=$PWD
 
 # Clone DC website repo and mixer submodule.
 rm -rf dc-instance
-git clone https://github.com/thanhnamnguyen/dc-instance.git
+git clone https://github.com/project-vaipe/dc-instance.git
 
 
 cd dc-instance/website
