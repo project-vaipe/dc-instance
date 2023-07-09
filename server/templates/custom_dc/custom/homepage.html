@@ -1,80 +1,184 @@
 {#
- Copyright 2023 Google LLC
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
-#}
-
-{%- extends BASE_HTML -%}
-
-{% set main_id = 'homepage' %}
-{% set page_id = 'page-homepage' %}
-
-{% block content %}
+  Copyright 2023 Google LLC
+  
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+  http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  #}
+  
+  {%- extends BASE_HTML -%}
+  
+  {% set main_id = 'homepage' %}
+  {% set page_id = 'page-homepage' %}
+  
+  {% block content %}
+  <div class="video-container">
+    <div class="main-title">
+      <div class="main-title-header">VIETNAM DATA COMMONS</div>
+      <div class="main-title-content">Vietnam Data Commons provides Vietnam-level data aggregated from a wide range of
+        sources into a single portal under a common schema. Vietnam Data Commons is powered by Data Commons</div>
+    </div>
+    <div class="container-button">
+      <a href="{{ url_for('static.about') }}">
+        <button class="button_learnmore">
+          LEARN MORE
+          <img src="custom_dc/custom/icon.png" alt="">
+        </button>
+      </a>
+    </div>
+    <video autoplay loop muted>
+      <source src="/custom_dc/custom/video.mov" type="video/webm">
+      <source src="/custom_dc/custom/video.mov" type="video/mp4">
+    </video>
+  </div>
   <section class="container">
-    <h2><strong>About Vietnam Data Commons</strong></h2>
-    <p>
-      Vietnam Data Commons, powered by
-      <a href="https://www.datacommons.org/">Data Commons</a>, is a joint effort
-      between
-      <a href="https://smarthealth.vinuni.edu.vn/"
-        >VinUni-Illinois Smart Health Center</a
-      >
-      at <a href="https://vinuni.edu.vn/">VinUniversity</a> and
-      <a href="https://bkai.ai/"
-        >The International Research Center for Artificial Intelligence</a
-      >
-      (BKAI) at
-      <a href="https://hust.edu.vn/"
-        >Hanoi University of Science and Technology</a
-      >
-      (HUST) to provide an open web-based platform to highlight Vietnam-specific
-      data across various domains. It features datasets published by Vietnamese
-      Ministries and governmental organizations and have been well validated
-      before published. We aim to provide a comprehensive view of the country's
-      social, economic, education and environmental trends through our free
-      dashboards and visualization tools. Data Commons synthesizes a single
-      graph from different data sources. It links references to the same
-      entities (such as cities, districts, states, etc.) across different
-      datasets to nodes on the graph, so that users can access data about a
-      particular entity aggregated from different sources without data cleaning
-      or joining. We hope the data contained within Data Commons will be useful
-      to students, researchers, and enthusiasts across different disciplines.
-    </p>
-    <h2><strong>Who can use it?</strong></h2>
-    <p>
-      We believe that giving everyone easy access to data can be revolutionary —
-      especially when it comes to solving the most challenging problems like
-      climate change. Hence, Vietnam Data Commons can be accessed by anyone
-      (consumers, journalists, policymakers and researchers) via the tools
-      available on our official website
-      <a href="http://datacommons.vn/">http://datacommons.vn/</a>. Students,
-      researchers and developers can use the provided APIs, all of which are
-      free for educational, academic and journalistic research purposes.
-    </p>
-    <h2><strong>Contributing to Vietnam Data Commons</strong></h2>
-    <p>
-      Vietnam Data Commons is entirely open-source. Any Vietnamese dataset added
-      to our platform are very welcome and will be featured in our official
-      webpage. You can contribute to our database through our
-      <a href="https://github.com/datacommonsorg/data">GitHub repo</a>. More
-      information on contributing can be found in our
-      <a href="https://docs.datacommons.org/contributing/">documentation</a>. We
-      are always looking for more collaborators, both for adding new data to
-      Data Commons and for building new and interesting applications of Vietnam
-      Data Commons. Contact us if you are interested in working with us. Mail us
-      for any queries or suggestions. For more information on the Data Commons
-      project, please visit
-      <a href="https://datacommons.org/about">this page</a>.
-    </p>
+    <div class="container-1">
+      <section class="homepage-content-child">
+        <div class="container-1-1">
+          <div class="container-1-1-chart">
+            <a href="{{ url_for('place.place') }}/country/VNM?category=Energy">
+              <img src="/custom_dc/custom/chart_energy.png" />
+            </a>
+          </div>
+          <div class="container-1-1-content">
+            <div class="container-1-1-content-title">
+              ENERGY
+              <img src="/custom_dc/custom/line.png" />
+            </div>
+            <div class="container-1-1-content-content">
+              Vietnam has been adopting sustainable energy alternatives for the past few years. Clean Energy initiatives
+              by
+              the Ministry of New & Renewable Energy has pushed India to 4th Global Position ↗ in for overall installed
+              renewable energy capacity. Renewable Energy Systems (RES) account for nearly 30% of the total installed
+              capacity↗ and Wind Energy and Solar Energy are the two biggest sources of RES. Yet, Vietnam still relies on
+              thermal power for ~60% of its electricity generation ↗ and we have a long way to go to successfully adopt
+              the
+              sustainable energy model.
+            </div>
+          </div>
+        </div>
+        <div class="container-1-1">
+          <div class="container-1-1-content">
+            <div class="container-1-1-content-title">
+              WATER QUALITY
+              <img src="/custom_dc/custom/line.png" />
+            </div>
+            <div class="container-1-1-content-content">
+              One of the major water quality issues in metropolitan areas is water hardness. Groundwater stations in Hanoi
+              ,
+              Hai Duong and Hai Phong are measuring water hardness well above the permissible levels (>180mg/L is
+              considered
+              very hard↗). But many cities are taking steps to improve their water quality indicators. Due to the
+              regulatory
+              steps taken by Municipal Corporation of Hanoi↗ (MCH), many water quality parameters like Chloride, pH are at
+              permissible levels in Hanoi and Hanoi Suburban districts. Hai Duong is becoming a global hub of chemical
+              manufacturing, and Hai Phong, Gujarat's biggest city, is witnessing high levels of Total Dissolved Solids.
+              TDS
+              values greater than 1200mg/L render the water unfit for consumption↗. </div>
+          </div>
+          <div class="container-1-1-chart">
+            <a href="{{ url_for('place.place') }}/country/VNM?category=Environment">
+              <img src="/custom_dc/custom/chart_hanoi_water_ph.png" />
+            </a>
+          </div>
+        </div>
+      </section>
+      <section class="homepage-content-child">
+        <div class="container-1-1">
+          <div class="container-1-1-chart">
+            <a href="{{ url_for('place.place') }}/country/VNM?category=Health">
+              <img src="/custom_dc/custom/charthealth.png" />
+            </a>
+          </div>
+          <div class="container-1-1-content">
+            <div class="container-1-1-content-title">
+              HEALTH
+              <img src="/custom_dc/custom/line.png" />
+            </div>
+            <div class="container-1-1-content-content">
+              Vietnam has been working towards betterment of its health infrastructure. Infant mortality rate has declined
+              more than 50% in the past decade and the gap between male and female infant mortality rates is closing.
+              Health
+              behavior is also showing appreciable trends in some cases. Smoking prevalence is dropping among Indian adult
+              males.
+            </div>
+          </div>
+        </div>
+        <div class="container-1-1">
+          <div class="container-1-1-content">
+            <div class="container-1-1-content-title">
+              ECONOMY
+              <img src="/custom_dc/custom/line.png" />
+            </div>
+            <div class="container-1-1-content-content">
+              The Vietnamese economy has been witnessing a steep increase in GDP per capita for the past couple of
+              decades.
+              After the launch of Make In Vietnam initiative in 2014, the domestic companies enjoyed a boost in market
+              capitalization. Despite that, the unemployment rate (both urban and rural) grew over twice its value in the
+              past
+              decade. Manipur has the highest working population whereas Hanoi houses the highest non-working population
+              in
+              Vietnam. </div>
+          </div>
+          <div class="container-1-1-chart">
+            <a href="{{ url_for('place.place') }}/country/VNM?category=Economics">
+              <img src="/custom_dc/custom/chart_economy.png" />
+            </a>
+          </div>
+        </div>
+      </section>
+      <section class="homepage-content-child">
+        <div class="container-1-1">
+          <div class="container-1-1-chart">
+            <a href="{{ url_for('tools.timeline') }}#place=country%2FVNM">
+              <img src="/custom_dc/custom/chart_education.png" />
+            </a>
+          </div>
+          <div class="container-1-1-content">
+            <div class="container-1-1-content-title">
+              EDUCATION
+              <img src="/custom_dc/custom/line.png" />
+            </div>
+            <div class="container-1-1-content-content">
+              According to the 2011 Census, Vietnam enjoys an overall literacy rate of 74% - a 10% increase from 2001
+              Census. 9.1% of Indian adults over 25 years hold a bachelor’s degree or higher education qualification
+              whereas
+              the fraction of same group with tertiary education occupies 9.9% of the total population for that age group.
+              Gross Enrollment Ratio (GER) denotes the fraction of high school students enrolling into colleges. All
+              Vietnam
+              Survey on Higher Education tells us that GER for the year 2019-20 is 27.1 ↗.
+            </div>
+          </div>
+        </div>
+        <div class="container-1-1">
+          <div class="container-1-1-content">
+            <div class="container-1-1-content-title">
+              DEMOGRAPHICS
+              <img src="/custom_dc/custom/line.png" />
+            </div>
+            <div class="container-1-1-content-content">
+              Vietnam is the world's second most populous country with a population of over 1.2 billion.The population
+              growth rate has been in steady decline for decades now. The ratio between urban and rural population has
+              changed considerably in the last 20 years. The ratio grew from 1:3 to 1:2 during the period of 1999-2019.
+              Life
+              expectancy has increased by 45% in the past 50 years. Child labour is in decline for the past decade.
+            </div>
+          </div>
+          <div class="container-1-1-chart">
+            <a href="{{ url_for('place.place') }}/country/VNM?category=Demographics">
+              <img src="/custom_dc/custom/population_hanoi.png" />
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
   </section>
-{% endblock %}
+  {% endblock %}
