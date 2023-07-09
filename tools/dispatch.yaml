@@ -1,9 +1,0 @@
-dispatch:
-  - url: "*/dashboard/*"
-    service: dashboard
-
-  - url: "*/api/places"
-    service: dashboard
-
-  - url: "*/api/data/*"
-    service: dashboard
