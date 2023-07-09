@@ -1,0 +1,4600 @@
+{
+  "by_variable": {
+    "Annual_Generation_Electricity": {
+      "by_entity": {
+        "geoId/01": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 135870901749.99998
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/02": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 5924428100
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/04": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 109628834430
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/05": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 52940512880
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/06": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 194110262920
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/08": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 54199489180
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/09": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 41164614340
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/10": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 5018144820
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/11": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 207804140
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/12": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 249657650840
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/13": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 119279200590
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/15": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 9324461090
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/16": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 19334886300
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/17": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 173552063930
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/18": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 89853263950
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/19": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 59376129450
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/20": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 54342899600
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/21": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 63424318100
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/22": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 102002451440
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/23": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 10411372640
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/24": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 36056980820
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/25": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 18349769200
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/26": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 104875132120
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/27": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 56551668250
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/28": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 65770451640
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/29": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 73430265790
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/30": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 23730185590
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/31": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 36859773700
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/32": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 40506782540
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/33": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 16710184740
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/34": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 61481734050
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/35": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 34385451940
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/36": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 131981774810
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/37": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 123953056460
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/38": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 42785159230
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/39": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 121121989880
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/40": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 83584730630
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/41": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 64859755720
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/42": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 230950472650
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/44": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 8015827290
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/45": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 98170078410
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/46": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 17038875410
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/47": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 77514124820
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/48": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 475491408540
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/49": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 37107969850
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/50": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 2366350070
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/51": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 102265106000
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/53": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 114202782640
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/54": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 56758045410
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/55": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 60934970290
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/56": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 41650450140
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "Count_Person_Employed": {
+      "by_entity": {
+        "geoId/01": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2255831
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 2226670
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2241560
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/02": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 340608
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 342400
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 344977
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/04": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3533340
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3477033
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3536813
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/05": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1353759
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 1323949
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1339385
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/06": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 18481847
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 18440895
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 18536619
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/08": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3138083
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3103531
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3145549
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/09": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1812544
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 1851993
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1828882
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/10": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 482050
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 474258
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 476327
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/11": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 369229
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 370229
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 371378
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/12": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 10757180
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 10449041
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 10679183
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/13": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 5139950
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 5075093
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 5110471
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/15": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 661272
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 652677
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 656382
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/16": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 928951
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 925358
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 936253
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/17": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 6206914
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 6176876
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 6207365
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/18": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3334895
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3302632
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3319261
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/19": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1693074
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 1669933
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1681436
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/20": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1475138
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 1464834
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1473585
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/21": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1988411
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 1968121
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1970127
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/22": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2043806
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 2011867
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2036978
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/23": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 659206
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 654965
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 659019
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/24": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3123993
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3068700
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3106097
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/25": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3618884
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3603172
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3617121
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/26": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 4742777
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 4632539
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 4682464
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/27": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3000253
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 2994920
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3000031
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/28": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1216563
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 1201880
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1203791
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/29": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3056512
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 2984340
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3022087
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/30": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 560609
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 552842
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 560452
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/31": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1043577
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 1034091
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1040229
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/32": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1497870
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 1466213
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1490001
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/33": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 743816
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 747339
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 749565
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/34": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 4690920
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 4564113
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 4662560
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/35": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 921718
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 908870
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 922587
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/36": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 9297244
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 9205821
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 9291643
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/37": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 5051146
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 4970998
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 5012688
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/38": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 409906
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 405580
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 409349
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/39": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 5622356
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 5510327
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 5566946
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/40": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1873245
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 1830061
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1855184
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/41": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2066119
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 2085939
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2078965
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/42": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 6242414
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 6196385
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 6241701
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/44": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 548851
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 551220
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 549752
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/45": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2374426
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 2297927
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2330701
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/46": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 471798
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 465250
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 469852
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/47": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3268622
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3238559
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3237379
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/48": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 14468512
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 14092833
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 14354645
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/49": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1749138
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 1702674
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1740226
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/50": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 335103
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 333081
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 338096
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/51": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 4457242
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 4308805
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 4410619
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/53": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3897191
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3822319
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3882593
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/54": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 754273
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 754453
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 756262
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/55": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3027047
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 2992049
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3012201
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/56": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 286530
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 281343
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 287245
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/72": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1110870
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 1117651
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1125573
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "Count_Person_FoodInsecure": {
+      "by_entity": {
+        "geoId/01": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 788250
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/02": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 86970
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/04": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 918940
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/05": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 499950
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/06": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 4011960
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/08": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 566440
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/09": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 428800
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/10": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 114190
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/11": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 70480
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/12": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 2567300
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/13": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1279310
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/15": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 162220
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/16": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 179580
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/17": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1211410
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/18": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 834530
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/19": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 297800
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/20": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 351090
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/21": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 644540
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/22": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 718360
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/23": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 166910
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/24": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 640180
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/25": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 566930
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/26": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1299020
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/27": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 432170
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/28": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 550370
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/29": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 809680
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/30": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 111080
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/31": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 225580
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/32": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 373370
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/33": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 119990
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/34": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 762530
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/35": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 298030
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/36": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 2090550
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/37": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1417440
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/38": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 51380
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/39": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1547110
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/40": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 583570
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/41": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 486200
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/42": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1353730
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/44": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 101100
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/45": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 555630
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/46": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 91510
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/47": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 905090
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/48": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 4092850
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/49": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 355550
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/50": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 68590
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/51": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 799620
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/53": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 790050
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/54": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 242180
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/55": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 530500
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/56": {
+          "ordered_facets": [
+            {
+              "facet_id": "180485622",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 67750
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "UnemploymentRate_Person": {
+      "by_entity": {
+        "geoId/01": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1.7
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 2.6
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.2
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/02": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.9
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 4
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.7
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/04": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.2
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3.8
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.4
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/05": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.4
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3.3
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.8
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/06": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 4.3
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 4.2
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 4.5
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/08": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.4
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.8
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/09": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 4.2
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.8
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/10": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.9
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 4.5
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 4.3
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/11": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 4.5
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 4.7
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 5
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/12": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.3
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 2.9
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.6
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/13": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.7
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.1
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/15": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.7
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3.5
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.3
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/16": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.6
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 2.7
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.6
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/17": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.7
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 4.6
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 4.2
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/18": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.6
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/19": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.3
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 2.7
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.7
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/20": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.8
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 2.7
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.9
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/21": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.2
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3.9
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.7
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/22": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.2
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3.7
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.6
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/23": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.3
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.4
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/24": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1.8
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3.2
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.5
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/25": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.6
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3.8
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.3
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/26": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.9
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 4.2
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.8
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/27": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.9
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 2.7
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.8
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/28": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.7
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3.9
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.4
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/29": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.4
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 2.5
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.5
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/30": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.4
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 2.6
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.3
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/31": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1.8
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 2.3
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/32": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 5.1
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 5.4
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 5.4
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/33": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1.2
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 2.5
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.1
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/34": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3.7
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.5
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/35": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.1
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 4
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.5
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/36": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.7
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 4.3
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 4
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/37": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.1
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3.7
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.4
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/38": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.1
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 2.1
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.1
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/39": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.2
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 4
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.7
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/40": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.2
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.9
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/41": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.9
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 4.2
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 4
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/42": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.2
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 4.4
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 4.1
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/44": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.4
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3.2
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/45": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.4
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3.2
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.1
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/46": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 2.1
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1.9
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/47": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.6
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3.4
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.3
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/48": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.7
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3.9
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 4
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/49": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.2
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 2.3
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.3
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/50": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 1.9
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 2.6
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.4
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/51": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.5
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 2.9
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.1
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/53": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.5
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 4.2
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 4.3
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/54": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.4
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3.9
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.3
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/55": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.3
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 2.9
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 2.4
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/56": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.3
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 3.6
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 3.5
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/72": {
+          "ordered_facets": [
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 5.6
+                }
+              ]
+            },
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 6
+                }
+              ]
+            },
+            {
+              "facet_id": "1249140336",
+              "observations": [
+                {
+                  "date": "2023-04",
+                  "value": 6
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "facets": {
+    "1249140336": {
+      "import_name": "BLS_LAUS",
+      "provenance_url": "https://www.bls.gov/lau/",
+      "measurement_method": "BLSSeasonallyAdjusted",
+      "observation_period": "P1M"
+    },
+    "180485622": {
+      "import_name": "Feeding America",
+      "provenance_url": "https://www.feedingamerica.org/",
+      "measurement_method": "FeedingAmerica_Estimate"
+    },
+    "2392525955": {
+      "import_name": "EIA_Electricity",
+      "provenance_url": "https://www.eia.gov/opendata/qb.php?category=0",
+      "unit": "KilowattHour"
+    },
+    "2978659163": {
+      "import_name": "BLS_LAUS",
+      "provenance_url": "https://www.bls.gov/lau/",
+      "measurement_method": "BLSSeasonallyUnadjusted",
+      "observation_period": "P1Y"
+    },
+    "324358135": {
+      "import_name": "BLS_LAUS",
+      "provenance_url": "https://www.bls.gov/lau/",
+      "measurement_method": "BLSSeasonallyUnadjusted",
+      "observation_period": "P1M"
+    }
+  }
+}

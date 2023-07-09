@@ -22,6 +22,7 @@ import (
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -42,31 +43,32 @@ var noDataPlaces = map[string]struct{}{
 	"southamerica": {},
 }
 
-type filterSpec struct {
-	prop       string
-	unit       string
-	lowerLimit float64
-	upperLimit float64
+// FilterSpec is a spec for filter.
+type FilterSpec struct {
+	Prop       string
+	Unit       string
+	LowerLimit float64
+	UpperLimit float64
 }
 
 // Check to see if an event meets the filter criteria.
 //
 // This requires a specific format of the "value" field. If an event does not
 // conform to the format, do not keep the event.
-func keepEvent(event *pb.EventCollection_Event, spec filterSpec) bool {
-	if spec.prop == "" {
+func keepEvent(event *pbv1.EventCollection_Event, spec FilterSpec) bool {
+	if spec.Prop == "" {
 		// No prop to filter by, keep event
 		return true
 	}
 	for prop, vals := range event.GetPropVals() {
-		if prop == spec.prop {
-			valStr := strings.TrimSpace(strings.TrimPrefix(vals.Vals[0], spec.unit))
+		if prop == spec.Prop {
+			valStr := strings.TrimSpace(strings.TrimPrefix(vals.Vals[0], spec.Unit))
 			v, err := strconv.ParseFloat(valStr, 64)
 			if err != nil {
 				// Can not convert the value, don't keep the event
 				return false
 			}
-			return v >= spec.lowerLimit && v <= spec.upperLimit
+			return v >= spec.LowerLimit && v <= spec.UpperLimit
 		}
 	}
 	// No prop found, the event does not have this prop, so not included
@@ -89,7 +91,7 @@ func getAffectedPlaces(ctx context.Context, placeDcid string, store *store.Store
 		for _, nodeProp := range nodeProps {
 			resp, err := propertyvalues.PropertyValues(
 				ctx,
-				&pb.PropertyValuesRequest{
+				&pbv1.PropertyValuesRequest{
 					NodeProperty: nodeProp,
 					Direction:    util.DirectionIn,
 				},
@@ -115,14 +117,14 @@ func getAffectedPlaces(ctx context.Context, placeDcid string, store *store.Store
 // Collection implements API for Mixer.EventCollection.
 func Collection(
 	ctx context.Context,
-	in *pb.EventCollectionRequest,
+	in *pbv1.EventCollectionRequest,
 	store *store.Store,
-) (*pb.EventCollectionResponse, error) {
+) (*pbv1.EventCollectionResponse, error) {
 	if in.GetEventType() == "" || in.GetDate() == "" {
 		return nil, status.Error(codes.InvalidArgument, "Missing required arguments")
 	}
-	if !util.CheckValidDCIDs([]string{in.GetAffectedPlaceDcid()}) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCID")
+	if err := util.CheckValidDCIDs([]string{in.GetAffectedPlaceDcid()}); err != nil {
+		return nil, err
 	}
 	filterProp := in.GetFilterProp()
 	filterLowerLimit := in.GetFilterLowerLimit()
@@ -140,7 +142,7 @@ func Collection(
 		bigtable.BtEventCollection,
 		[][]string{{in.GetEventType()}, affectedPlaces, {in.GetDate()}},
 		func(jsonRaw []byte) (interface{}, error) {
-			var eventCollection pb.EventCollection
+			var eventCollection pbv1.EventCollection
 			err := proto.Unmarshal(jsonRaw, &eventCollection)
 			return &eventCollection, err
 		},
@@ -149,10 +151,10 @@ func Collection(
 		return nil, err
 	}
 
-	resp := &pb.EventCollectionResponse{
-		EventCollection: &pb.EventCollection{
-			Events:         []*pb.EventCollection_Event{},
-			ProvenanceInfo: map[string]*pb.EventCollection_ProvenanceInfo{},
+	resp := &pbv1.EventCollectionResponse{
+		EventCollection: &pbv1.EventCollection{
+			Events:         []*pbv1.EventCollection_Event{},
+			ProvenanceInfo: map[string]*pbv1.EventCollection_ProvenanceInfo{},
 		},
 	}
 
@@ -163,14 +165,14 @@ func Collection(
 		}
 		// Each row represents events from a sub-place. Merge them together.
 		for _, row := range btData {
-			data := row.Data.(*pb.EventCollection)
+			data := row.Data.(*pbv1.EventCollection)
 			for _, event := range data.Events {
 				if filterProp != "" {
-					if !keepEvent(event, filterSpec{
-						prop:       filterProp,
-						unit:       filterUnit,
-						lowerLimit: filterLowerLimit,
-						upperLimit: filterUpperLimit,
+					if !keepEvent(event, FilterSpec{
+						Prop:       filterProp,
+						Unit:       filterUnit,
+						LowerLimit: filterLowerLimit,
+						UpperLimit: filterUpperLimit,
 					}) {
 						continue
 					}
@@ -191,14 +193,14 @@ func Collection(
 // CollectionDate implements API for Mixer.EventCollectionDate.
 func CollectionDate(
 	ctx context.Context,
-	in *pb.EventCollectionDateRequest,
+	in *pbv1.EventCollectionDateRequest,
 	store *store.Store,
-) (*pb.EventCollectionDateResponse, error) {
+) (*pbv1.EventCollectionDateResponse, error) {
 	if in.GetEventType() == "" {
 		return nil, status.Error(codes.InvalidArgument, "Missing required arguments")
 	}
-	if !util.CheckValidDCIDs([]string{in.GetAffectedPlaceDcid()}) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCID")
+	if err := util.CheckValidDCIDs([]string{in.GetAffectedPlaceDcid()}); err != nil {
+		return nil, err
 	}
 
 	// Merge all the affected places in the final result.
@@ -213,7 +215,7 @@ func CollectionDate(
 		bigtable.BtEventCollectionDate,
 		[][]string{{in.GetEventType()}, affectedPlaces},
 		func(jsonRaw []byte) (interface{}, error) {
-			var d pb.EventCollectionDate
+			var d pbv1.EventCollectionDate
 			err := proto.Unmarshal(jsonRaw, &d)
 			return &d, err
 		},
@@ -222,8 +224,8 @@ func CollectionDate(
 		return nil, err
 	}
 
-	resp := &pb.EventCollectionDateResponse{
-		EventCollectionDate: &pb.EventCollectionDate{
+	resp := &pbv1.EventCollectionDateResponse{
+		EventCollectionDate: &pbv1.EventCollectionDate{
 			Dates: []string{},
 		},
 	}
@@ -237,7 +239,7 @@ func CollectionDate(
 		dateSet := map[string]struct{}{}
 		dateStrings := []string{}
 		for _, row := range btData {
-			data := row.Data.(*pb.EventCollectionDate)
+			data := row.Data.(*pbv1.EventCollectionDate)
 			for _, date := range data.Dates {
 				if _, ok := dateSet[date]; !ok {
 					dateSet[date] = struct{}{}

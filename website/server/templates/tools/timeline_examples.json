@@ -1,76 +1,61 @@
 [
   {
-    "header": "Water Withdrawal Rates",
+    "header": "Total Population",
     "preposition": "for",
     "examples": [{
-      "text": "California",
-      "url": "#place=geoId%2F06&statsVar=WithdrawalRate_Water_Thermoelectric__WithdrawalRate_Water_PublicSupply__WithdrawalRate_Water_Irrigation__WithdrawalRate_Water_Aquaculture"
+      "text": "Hà Nội",
+      "url": "#place=wikidataId%2FQ1858&statsVar=Count_Person"
     }, {
-      "text": "Imperial County",
-      "url": "#place=geoId%2F06025&statsVar=WithdrawalRate_Water_Irrigation__WithdrawalRate_Water_Irrigation_FreshWater_GroundWater__WithdrawalRate_Water_Irrigation_SurfaceWater&chart=%7B\"withdrawalRate\"%3A%7B\"pc\"%3Afalse%2C\"delta\"%3Afalse%7D%7D"
+      "text": "Hồ Chí Minh city",
+      "url": "#place=wikidataId%2FQ1854&statsVar=Count_Person"
     }]
   }, {
-    "header": "University towns",
+    "header": "Municipalities of Vietnam",
     "preposition": "by",
     "examples": [{
-      "text": "age",
-      "url": "#&place=geoId/0606000,geoId/2511000,geoId/2603000,geoId/1777005,geoId/1225175,geoId/4815976&statsVar=Median_Age_Person"
+      "text": "population",
+      "url": "#place=wikidataId%2FQ1858%2CwikidataId%2FQ25282%2CwikidataId%2FQ1854%2CwikidataId%2FQ216075%2C%2CwikidataId%2FQ72818&statsVar=Count_Person"
     }, {
-      "text": "income",
-      "url": "#&place=geoId/0606000,geoId/2511000,geoId/2603000,geoId/1777005,geoId/1225175,geoId/4815976&statsVar=Median_Income_Person"
+      "text": "rainfall",
+      "url": "#place=wikidataId%2FQ1858%2CwikidataId%2FQ25282%2CwikidataId%2FQ1854%2CwikidataId%2FQ216075%2C%2CwikidataId%2FQ72818&statsVar=Mean_Rainfall"
     }, {
-      "text": "crime",
-      "url": "#&place=geoId/0606000,geoId/2511000,geoId/2603000,geoId/1777005,geoId/1225175,geoId/4815976&statsVar=Count_CriminalActivities_ViolentCrime"
+      "text": "temperature",
+      "url": "#place=wikidataId%2FQ1858%2CwikidataId%2FQ25282%2CwikidataId%2FQ1854%2CwikidataId%2FQ216075%2C%2CwikidataId%2FQ72818&statsVar=Mean_Temperature"
     }]
   }, {
-    "header": "Close by but very different",
+    "header": "Close by",
     "subheaders": [{
-      "title": "Berkeley & Piedmont",
+      "title": "VietNam & Laos & Cambodia ",
       "examples": [{
-        "text": "poverty",
-        "url": "#place=geoId%2F0606000%2CgeoId%2F0656938&statsVar=Count_Person_BelowPovertyLevelInThePast12Months&chart=%7B%22count%22%3A%7B%22pc%22%3Atrue%2C%22denom%22%3A%22Count_Person%22%7D%7D"
+        "text": "GDP",
+        "url": "#place=country%2FLAO%2Ccountry%2FKHM%2Ccountry%2FVNM&statsVar=Amount_EconomicActivity_GrossDomesticProduction_Nominal"
       }, {
-        "text": "age distribution",
-        "url": "#&&place=geoId/0606000,geoId/0656938&statsVar=Count_Person_18To24Years__Count_Person_35To44Years__Count_Person_45To54Years__Count_Person_65To74Years"
+        "text": "Life Expectancy",
+        "url": "#place=country%2FLAO%2Ccountry%2FKHM%2Ccountry%2FVNM&statsVar=LifeExpectancy_Person"
       }, {
-        "text": "education",
-        "url": "#&&place=geoId/0606000,geoId/0656938&pc=1&statsVar=Count_Person_EducationalAttainmentBachelorsDegree__Count_Person_EducationalAttainmentMastersDegree__Count_Person_EducationalAttainmentDoctorateDegree&chart=%7B%22count%22%3A%7B%22denom%22%3A%22Count_Person%22%7D%7D"
-      }]
-    }, {
-      "title": "Palo Alto & East Palo Alto",
-      "examples": [{
-        "text": "race",
-        "url": "#&&place=geoId/0655282,geoId/0620956&statsVar=Count_Person_AsianAlone__Count_Person_BlackOrAfricanAmericanAlone__Count_Person_NativeHawaiianOrOtherPacificIslanderAlone__Count_Person_WhiteAlone&chart=%7B%22count%22%3A%7B%22pc%22%3Atrue%2C%22denom%22%3A%22Count_Person%22%7D%7D"
-      }, {
-        "text": "income",
-        "url": "#&&place=geoId/0655282,geoId/0620956&&statsVar=Median_Income_Person"
-      }, {
-        "text": "employment",
-        "url": "#&&place=geoId/0655282,geoId/0620956&pc=1&statsVar=Count_Person_Employed&chart=%7B%22count%22%3A%7B%22denom%22%3A%22Count_Person%22%7D%7D"
-      }, {
-        "text": "marital status",
-        "url": "#&&place=geoId/0655282,geoId/0620956&pc=1&statsVar=Count_Person_Divorced__Count_Person_MarriedAndNotSeparated__Count_Person_NeverMarried&chart=%7B%22count%22%3A%7B%22denom%22%3A%22Count_Person%22%7D%7D"
+        "text": "Internet Users",
+        "url": "#place=country%2FLAO%2Ccountry%2FKHM%2Ccountry%2FVNM&statsVar=Count_Person_IsInternetUser_PerCapita"
       }]
     }]
   }, {
-    "header": "Extremes",
+    "header": "Compare",
     "subheaders": [{
-      "title": "Santa Clara County vs Imperial County",
+      "title": "VietNam vs USA",
       "examples": [{
-        "text": "Richest vs. Poorest CA counties",
-        "url": "#&&place=geoId/06085,geoId/06025&statsVar=Median_Income_Person"
+        "text": "GPA per capita",
+        "url": "#place=country%2FVNM%2Ccountry%2FUSA&statsVar=Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita"
       }, {
-        "text": "Cause of Death",
-        "url": "#&&place=geoId/06085,geoId/06025&statsVar=Count_Death_DiseasesOfTheCirculatorySystem__Count_Death_ExternalCauses"
+        "text": "COVID-19 Death",
+        "url": "#place=country%2FVNM%2Ccountry%2FUSA&statsVar=CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased&pc=&denom=Count_Person"
       }]
     }, {
-      "title": "Atlanta vs West Jordan",
+      "title": "VietNam vs China",
       "examples": [{
-        "text": "Highest vs Lowest Income Disparity",
-        "url": "#&&place=geoId/1304000,geoId/4982950&statsVar=Median_Income_Person"
+        "text": "GDP",
+        "url": "#place=country%2FVNM%2Ccountry%2FCHN&statsVar=Amount_EconomicActivity_GrossDomesticProduction_Nomina"
       }, {
-        "text": "gender balance",
-        "url": "#&&place=geoId/1304000,geoId/4982950&pc=1&statsVar=Count_Person_Female__Count_Person_Male&chart=%7B%22count%22%3A%7B%22denom%22%3A%22Count_Person%22%7D%7D"
+        "text": "CO2 Emissions Per Capita",
+        "url": "#place=country%2FVNM%2Ccountry%2FCHN&statsVar=Amount_Emissions_CarbonDioxide_PerCapita"
       }]
     }]
   }

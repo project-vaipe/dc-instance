@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
 package resource
 
 import (
-	"database/sql"
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -43,19 +42,24 @@ type Cache struct {
 	// ParentSvg is a map of sv/svg id to a list of its parent svgs sorted alphabetically.
 	ParentSvg map[string][]string
 	// SvgInfo is a map of svg id to its information.
-	RawSvg         map[string]*pb.StatVarGroupNode
+	RawSvg map[string]*pb.StatVarGroupNode
+	// A list of blocked top level svg.
+	BlockListSvg map[string]struct{}
+	// SVG search index
 	SvgSearchIndex *SearchIndex
-	SQLiteDb       *sql.DB
 }
 
 // Metadata represents the metadata used by the server.
 type Metadata struct {
-	Mappings        []*types.Mapping
-	OutArcInfo      map[string]map[string][]types.OutArcInfo
-	InArcInfo       map[string][]types.InArcInfo
-	SubTypeMap      map[string]string
-	MixerProject    string
-	BigQueryDataset string
+	Mappings          []*types.Mapping
+	OutArcInfo        map[string]map[string][]*types.OutArcInfo
+	InArcInfo         map[string][]*types.InArcInfo
+	SubTypeMap        map[string]string
+	HostProject       string
+	BigQueryDataset   string
+	RemoteMixerDomain string
+	RemoteMixerAPIKey string
+	FoldRemoteRootSvg bool
 }
 
 // SearchIndex holds the index for searching stat var (group).

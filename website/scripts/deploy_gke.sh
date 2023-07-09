@@ -73,10 +73,11 @@ fi
 
 cd $ROOT
 if [[ $WEBSITE_HASH == "" ]]; then
-  WEBSITE_HASH=e0ed277
+  WEBSITE_HASH=$(git rev-parse --short=7 HEAD)
 fi
 
-MIXER_GITHASH=7a60ad2
+cd $ROOT/mixer
+MIXER_HASH=$(git rev-parse --short=7 HEAD)
 
 cd $ROOT/deploy/git
 echo $WEBSITE_HASH > website_hash.txt
@@ -89,7 +90,13 @@ if [[ $PROJECT_ID != "" ]]; then
   IMAGE_PROJECT=$PROJECT_ID
   cd $ROOT/deploy/overlays
   cp custom_kustomization.yaml.tpl kustomization.yaml
-  sed -i'' "s/<PROJECT_ID>/$PROJECT_ID/g" kustomization.yaml
+  # OS X has a different sed
+  # https://unix.stackexchange.com/questions/13711/differences-between-sed-on-mac-osx-and-other-standard-sed
+  if [ $(uname) == "Darwin" ]; then
+    sed -i '' "s/<PROJECT_ID>/$PROJECT_ID/g" kustomization.yaml
+  else
+    sed -i'' "s/<PROJECT_ID>/$PROJECT_ID/g" kustomization.yaml
+  fi
   export PROJECT_ID=$PROJECT_ID
   yq eval -i '.project = env(PROJECT_ID)' ../base/custom_bigtable_info.yaml
   yq eval -i 'del(.tables)' ../base/custom_bigtable_info.yaml
@@ -113,7 +120,7 @@ fi
 CLUSTER_NAME=$CLUSTER_PREFIX-$LOCATION
 
 # Deploy to GKE
-kustomize edit set image gcr.io/datcom-ci/datacommons-website=gcr.io/datcom-ci/datacommons-website:$WEBSITE_HASH
+kustomize edit set image gcr.io/datcom-ci/datacommons-website=gcr.io/$IMAGE_PROJECT/datacommons-website:$WEBSITE_HASH
 kustomize edit set image gcr.io/datcom-ci/datacommons-nl=gcr.io/$IMAGE_PROJECT/datacommons-nl:$WEBSITE_HASH
 kustomize edit set image gcr.io/datcom-ci/datacommons-mixer=gcr.io/datcom-ci/datacommons-mixer:$MIXER_HASH
 kustomize build > kustomize-build.yaml
@@ -141,7 +148,7 @@ gsutil cp gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$MIXER_HASH.pb .
 gcloud endpoints services deploy mixer-grpc.$MIXER_HASH.pb endpoints.yaml --project $PROJECT_ID
 
 # Reset changed file
-#git checkout HEAD -- kustomization.yaml
+git checkout HEAD -- kustomization.yaml
 cd $ROOT
 git checkout HEAD -- deploy/git/mixer_hash.txt
 git checkout HEAD -- deploy/git/website_hash.txt

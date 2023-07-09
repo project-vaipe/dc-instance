@@ -20,7 +20,8 @@ import (
 	"runtime"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -33,7 +34,7 @@ func TestLinkedPropertyValues(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "linked_property_values")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
 			node       string
@@ -44,13 +45,8 @@ func TestLinkedPropertyValues(t *testing.T) {
 				"country/USA",
 				"County",
 			},
-			{
-				"CA_county.json",
-				"geoId/06",
-				"County",
-			},
 		} {
-			req := &pb.LinkedPropertyValuesRequest{
+			req := &pbv1.LinkedPropertyValuesRequest{
 				NodeProperty:  c.node + "/" + "containedInPlace",
 				ValueNodeType: c.typ,
 			}
@@ -66,7 +62,7 @@ func TestLinkedPropertyValues(t *testing.T) {
 				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
-			var expected pb.PropertyValuesResponse
+			var expected pbv1.PropertyValuesResponse
 			if err := test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 				continue

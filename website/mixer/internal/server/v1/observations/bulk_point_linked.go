@@ -21,6 +21,7 @@ import (
 	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
@@ -35,9 +36,9 @@ import (
 // BulkPointLinked implements API for Mixer.BulkObservationsPointLinked.
 func BulkPointLinked(
 	ctx context.Context,
-	in *pb.BulkObservationsPointLinkedRequest,
+	in *pbv1.BulkObservationsPointLinkedRequest,
 	store *store.Store,
-) (*pb.BulkObservationsPointResponse, error) {
+) (*pbv1.BulkObservationsPointResponse, error) {
 	entityType := in.GetEntityType()
 	linkedEntity := in.GetLinkedEntity()
 	linkedProperty := in.GetLinkedProperty()
@@ -72,8 +73,8 @@ func BulkPointLinked(
 	if err != nil {
 		return nil, err
 	}
-	result := &pb.BulkObservationsPointResponse{
-		Facets: map[string]*pb.StatMetadata{},
+	result := &pbv1.BulkObservationsPointResponse{
+		Facets: map[string]*pb.Facet{},
 	}
 
 	variablesMissingData := []string{}
@@ -84,13 +85,13 @@ func BulkPointLinked(
 			variablesMissingData = append(variablesMissingData, variable)
 			continue
 		}
-		entityResult := map[string]*pb.EntityObservations{}
+		entityResult := map[string]*pbv1.EntityObservations{}
 		cohorts := data.SourceCohorts
 		// Sort cohort first, so the preferred source is populated first.
 		sort.Sort(ranking.CohortByRank(cohorts))
 		for _, cohort := range cohorts {
-			facet := stat.GetMetadata(cohort)
-			facetID := util.GetMetadataHash(facet)
+			facet := util.GetFacet(cohort)
+			facetID := util.GetFacetID(facet)
 			result.Facets[facetID] = facet
 			for entity, val := range cohort.Val {
 				// When date is in the request, response date is the given date.
@@ -100,7 +101,7 @@ func BulkPointLinked(
 					respDate = cohort.PlaceToLatestDate[entity]
 				}
 				if _, ok := entityResult[entity]; !ok {
-					entityResult[entity] = &pb.EntityObservations{
+					entityResult[entity] = &pbv1.EntityObservations{
 						Entity:        entity,
 						PointsByFacet: []*pb.PointStat{},
 					}
@@ -115,7 +116,7 @@ func BulkPointLinked(
 				)
 			}
 		}
-		variableObservations := &pb.VariableObservations{
+		variableObservations := &pbv1.VariableObservations{
 			Variable: variable,
 		}
 		allEntities := []string{}
@@ -159,7 +160,7 @@ func BulkPointLinked(
 	if len(variablesMissingData) > 0 {
 		moreResult, err := BulkPoint(
 			ctx,
-			&pb.BulkObservationsPointRequest{
+			&pbv1.BulkObservationsPointRequest{
 				Variables: variablesMissingData,
 				Entities:  childPlaces,
 				Date:      date,
@@ -183,17 +184,17 @@ func BulkPointLinked(
 			if !store.MemDb.HasStatVar(variable) {
 				continue
 			}
-			observationsByEntity := []*pb.EntityObservations{}
+			observationsByEntity := []*pbv1.EntityObservations{}
 			for _, entity := range childPlaces {
 				pointValue, facet := store.MemDb.ReadPointValue(variable, entity, date)
 				// Override public data from private import
 				if pointValue != nil {
-					facetID := util.GetMetadataHash(facet)
+					facetID := util.GetFacetID(facet)
 					pointValue.Facet = facetID
 					result.Facets[facetID] = facet
 					observationsByEntity = append(
 						observationsByEntity,
-						&pb.EntityObservations{
+						&pbv1.EntityObservations{
 							Entity:        entity,
 							PointsByFacet: []*pb.PointStat{pointValue},
 						},
@@ -202,7 +203,7 @@ func BulkPointLinked(
 			}
 			result.ObservationsByVariable = append(
 				result.ObservationsByVariable,
-				&pb.VariableObservations{
+				&pbv1.VariableObservations{
 					Variable:             variable,
 					ObservationsByEntity: observationsByEntity,
 				},
@@ -224,7 +225,7 @@ func BulkPointLinked(
 					// prefer the current cohort.
 					preferredPoint := entityObservation.PointsByFacet[0]
 					for _, point := range entityObservation.PointsByFacet {
-						if stat.IsInferiorFacetMetadata(result.Facets[point.Facet]) {
+						if stat.IsInferiorFacet(result.Facets[point.Facet]) {
 							break
 						}
 						if point.Date > preferredPoint.Date {

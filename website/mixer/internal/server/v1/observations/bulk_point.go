@@ -21,6 +21,7 @@ import (
 	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -31,9 +32,9 @@ import (
 // BulkPoint implements API for Mixer.BulkObservationsPoint.
 func BulkPoint(
 	ctx context.Context,
-	in *pb.BulkObservationsPointRequest,
+	in *pbv1.BulkObservationsPointRequest,
 	store *store.Store,
-) (*pb.BulkObservationsPointResponse, error) {
+) (*pbv1.BulkObservationsPointResponse, error) {
 	entities := in.GetEntities()
 	variables := in.GetVariables()
 	date := in.GetDate()
@@ -44,18 +45,18 @@ func BulkPoint(
 		return nil, err
 	}
 
-	result := &pb.BulkObservationsPointResponse{
-		Facets: map[string]*pb.StatMetadata{},
+	result := &pbv1.BulkObservationsPointResponse{
+		Facets: map[string]*pb.Facet{},
 	}
-	tmpResult := map[string]*pb.VariableObservations{}
+	tmpResult := map[string]*pbv1.VariableObservations{}
 	for _, entity := range entities {
 		for _, variable := range variables {
 			series := cacheData[entity][variable].SourceSeries
-			entityObservations := &pb.EntityObservations{
+			entityObservations := &pbv1.EntityObservations{
 				Entity: entity,
 			}
 			if _, ok := tmpResult[variable]; !ok {
-				tmpResult[variable] = &pb.VariableObservations{
+				tmpResult[variable] = &pbv1.VariableObservations{
 					Variable: variable,
 				}
 			}
@@ -64,30 +65,31 @@ func BulkPoint(
 				// When date is not given, tract the latest date from each series
 				latestDateAcrossSeries := ""
 				for idx, series := range series {
-					metadata := stat.GetMetadata(series)
-					facet := util.GetMetadataHash(metadata)
+					facet := util.GetFacet(series)
+					facetID := util.GetFacetID(facet)
 					// Date is given
 					if date != "" {
 						if value, ok := series.Val[date]; ok {
 							ps := &pb.PointStat{
 								Date:  date,
 								Value: proto.Float64(value),
-								Facet: facet,
+								Facet: facetID,
 							}
 							entityObservations.PointsByFacet = append(
 								entityObservations.PointsByFacet, ps)
 						}
-						result.Facets[facet] = metadata
+						result.Facets[facetID] = facet
 						if !allFacets {
 							break
 						}
 					} else {
-						// This is to query from one facet and there is already data from
-						// higher ranked facet. If the current facet is from an inferior
-						// facet (like wikidata) then don't use it.
-						// Such inferior facet is only used when there is no better facet
-						// is prsent.
+						// Date is not given, fetch the latest date.
 						if !allFacets && idx > 0 && stat.IsInferiorFacetPb(series) {
+							// This is to query from one facet and there is already data from
+							// higher ranked facet. If the current facet is from an inferior
+							// facet (like wikidata) then don't use it.
+							// Such inferior facet is only used when there is no better facet
+							// is prsent.
 							break
 						}
 						var ps *pb.PointStat
@@ -98,24 +100,27 @@ func BulkPoint(
 								ps = &pb.PointStat{
 									Date:  date,
 									Value: proto.Float64(value),
-									Facet: facet,
+									Facet: facetID,
 								}
 							}
 						}
 						if idx == 0 || allFacets {
 							entityObservations.PointsByFacet = append(
 								entityObservations.PointsByFacet, ps)
-						} else if latestDate > latestDateAcrossSeries {
-							latestDateAcrossSeries = latestDate
-							entityObservations.PointsByFacet[0] = ps
+						}
+						if !allFacets {
+							if idx == 0 || latestDate > latestDateAcrossSeries {
+								latestDateAcrossSeries = latestDate
+								entityObservations.PointsByFacet[0] = ps
+							}
 						}
 					}
-					result.Facets[facet] = metadata
+					result.Facets[facetID] = facet
 				}
 			} else if store.MemDb.HasStatVar(variable) {
 				pointValue, facet := store.MemDb.ReadPointValue(variable, entity, date)
 				if pointValue != nil {
-					facetID := util.GetMetadataHash(facet)
+					facetID := util.GetFacetID(facet)
 					pointValue.Facet = facetID
 					result.Facets[facetID] = facet
 					entityObservations.PointsByFacet = append(

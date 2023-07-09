@@ -24,9 +24,9 @@
 // ========================================
 
 syntax = "proto3";
-option go_package = "./proto";
 package datacommons;
 
+option go_package = "github.com/datacommonsorg/mixer/internal/proto";
 
 // Represent information about Bigtable in a project.
 // This is repsented in yaml format, used as server config.
@@ -83,4 +83,6 @@ message GetVersionResponse {
   string bigquery = 2;
   // Github commit hash
   string git_hash = 3;
+  // Remote mixer domain
+  string remote_mixer_domain = 4;
 }

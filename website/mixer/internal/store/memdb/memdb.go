@@ -29,6 +29,7 @@ import (
 	"cloud.google.com/go/storage"
 	"github.com/datacommonsorg/mixer/internal/parser/tmcf"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/api/iterator"
 	"google.golang.org/grpc/codes"
@@ -40,7 +41,7 @@ import (
 // MemDb holds imported data in memory.
 type MemDb struct {
 	// statVar -> place -> []Series
-	statSeries map[string]map[string][]*pb.Series
+	statSeries map[string]map[string][]*pb.SourceSeries
 	config     *pb.MemdbConfig
 	// place -> svg -> count
 	placeSvExistence map[string]map[string]int32
@@ -50,7 +51,7 @@ type MemDb struct {
 // NewMemDb initialize a MemDb instance.
 func NewMemDb() *MemDb {
 	return &MemDb{
-		statSeries:       map[string]map[string][]*pb.Series{},
+		statSeries:       map[string]map[string][]*pb.SourceSeries{},
 		config:           &pb.MemdbConfig{},
 		placeSvExistence: map[string]map[string]int32{},
 	}
@@ -85,7 +86,7 @@ func (memDb *MemDb) IsEmpty() bool {
 }
 
 // ReadSeries reads stat series from in-memory DB.
-func (memDb *MemDb) ReadSeries(statVar, place string) []*pb.Series {
+func (memDb *MemDb) ReadSeries(statVar, place string) []*pb.SourceSeries {
 	memDb.lock.RLock()
 	defer memDb.lock.RUnlock()
 	if _, ok := memDb.statSeries[statVar]; ok {
@@ -93,14 +94,14 @@ func (memDb *MemDb) ReadSeries(statVar, place string) []*pb.Series {
 			return series
 		}
 	}
-	return []*pb.Series{}
+	return []*pb.SourceSeries{}
 }
 
 // ReadPointValue reads one observation point.
 // If date is "", the latest observation is returned, otherwise, the observation
 // corresponding to the given date is returned.
 func (memDb *MemDb) ReadPointValue(statVar, place, date string) (
-	*pb.PointStat, *pb.StatMetadata,
+	*pb.PointStat, *pb.Facet,
 ) {
 	memDb.lock.RLock()
 	defer memDb.lock.RUnlock()
@@ -120,20 +121,20 @@ func (memDb *MemDb) ReadPointValue(statVar, place, date string) (
 				return &pb.PointStat{
 					Date:  date,
 					Value: proto.Float64(val),
-				}, series.Metadata
+				}, util.GetFacet(series)
 			}
 		}
 	} else {
 		// Get the latest date from all series
 		latestDate := ""
 		var latestVal float64
-		var meta *pb.StatMetadata
+		var facet *pb.Facet
 		for _, series := range seriesList {
 			for date, val := range series.Val {
 				if date > latestDate {
 					latestDate = date
 					latestVal = val
-					meta = series.Metadata
+					facet = util.GetFacet(series)
 				}
 			}
 		}
@@ -141,7 +142,7 @@ func (memDb *MemDb) ReadPointValue(statVar, place, date string) (
 			return &pb.PointStat{
 				Date:  latestDate,
 				Value: proto.Float64(latestVal),
-			}, meta
+			}, facet
 		}
 	}
 	return nil, nil
@@ -157,16 +158,17 @@ func (memDb *MemDb) ReadStatDate(statVar string) *pb.StatDateList {
 		return result
 	}
 	tmp := map[string]map[string]float64{}
-	metaMap := map[string]*pb.StatMetadata{}
+	metaMap := map[string]*pb.Facet{}
 	for _, seriesList := range placeData {
 		for _, series := range seriesList {
-			metahash := util.GetMetadataHash(series.Metadata)
-			metaMap[metahash] = series.Metadata
-			if _, ok := tmp[metahash]; !ok {
-				tmp[metahash] = map[string]float64{}
+			facet := util.GetFacet(series)
+			facetID := util.GetFacetID(facet)
+			metaMap[facetID] = facet
+			if _, ok := tmp[facetID]; !ok {
+				tmp[facetID] = map[string]float64{}
 			}
 			for date := range series.Val {
-				tmp[metahash][date]++
+				tmp[facetID][date]++
 			}
 		}
 	}
@@ -181,31 +183,32 @@ func (memDb *MemDb) ReadStatDate(statVar string) *pb.StatDateList {
 
 // ReadObservationDates reads observation date frequency for a given stat var.
 func (memDb *MemDb) ReadObservationDates(statVar string) (
-	*pb.VariableObservationDates,
-	map[string]*pb.StatMetadata,
+	*pbv1.VariableObservationDates,
+	map[string]*pb.Facet,
 ) {
 	memDb.lock.RLock()
 	defer memDb.lock.RUnlock()
-	data := &pb.VariableObservationDates{
+	data := &pbv1.VariableObservationDates{
 		Variable:         statVar,
-		ObservationDates: []*pb.ObservationDates{},
+		ObservationDates: []*pbv1.ObservationDates{},
 	}
 	placeData, ok := memDb.statSeries[statVar]
 	if !ok {
 		return data, nil
 	}
-	// keyed by date, metahash, value is the count of places
+	// keyed by date, facetID, value is the count of places
 	tmp := map[string]map[string]float64{}
-	metaMap := map[string]*pb.StatMetadata{}
+	metaMap := map[string]*pb.Facet{}
 	for _, seriesList := range placeData {
 		for _, series := range seriesList {
-			metahash := util.GetMetadataHash(series.Metadata)
-			metaMap[metahash] = series.Metadata
+			facet := util.GetFacet(series)
+			facetID := util.GetFacetID(facet)
+			metaMap[facetID] = facet
 			for date := range series.Val {
 				if _, ok := tmp[date]; !ok {
 					tmp[date] = map[string]float64{}
 				}
-				tmp[date][metahash]++
+				tmp[date][facetID]++
 			}
 		}
 	}
@@ -215,14 +218,14 @@ func (memDb *MemDb) ReadObservationDates(statVar string) (
 	}
 	sort.Strings(allDates)
 	for _, date := range allDates {
-		obsDates := &pb.ObservationDates{
+		obsDates := &pbv1.ObservationDates{
 			Date:        date,
-			EntityCount: []*pb.EntityCount{},
+			EntityCount: []*pbv1.EntityCount{},
 		}
-		for metahash, count := range tmp[date] {
-			obsDates.EntityCount = append(obsDates.EntityCount, &pb.EntityCount{
+		for facetID, count := range tmp[date] {
+			obsDates.EntityCount = append(obsDates.EntityCount, &pbv1.EntityCount{
 				Count: count,
-				Facet: metahash,
+				Facet: facetID,
 			})
 		}
 		sort.SliceStable(obsDates.EntityCount, func(i, j int) bool {
@@ -327,7 +330,7 @@ func (memDb *MemDb) LoadConfig(ctx context.Context, file string) error {
 func (memDb *MemDb) LoadFromGcs(ctx context.Context, bucket, prefix string) error {
 	memDb.lock.Lock()
 	defer memDb.lock.Unlock()
-	memDb.statSeries = map[string]map[string][]*pb.Series{}
+	memDb.statSeries = map[string]map[string][]*pb.SourceSeries{}
 	gcsClient, err := storage.NewClient(ctx)
 	if err != nil {
 		return err
@@ -408,7 +411,7 @@ func (memDb *MemDb) LoadFromGcs(ctx context.Context, bucket, prefix string) erro
 
 func buildMemSVExistenceCache(
 	parentSvg map[string]string,
-	statSeries map[string]map[string][]*pb.Series,
+	statSeries map[string]map[string][]*pb.SourceSeries,
 ) map[string]map[string]int32 {
 	result := map[string]map[string]int32{}
 	for sv, placeData := range statSeries {
@@ -438,11 +441,25 @@ func buildMemSVExistenceCache(
 
 // nodeObs holds information for one observation
 type nodeObs struct {
-	statVar string
-	place   string
-	date    string // Unpaired date
-	value   string // Unpaired value
-	meta    *pb.StatMetadata
+	statVar           string
+	place             string
+	date              string // Unpaired date
+	value             string // Unpaired value
+	provenanceUrl     string
+	importName        string
+	measurementMethod string
+	unit              string
+	scalingFactor     string
+	observationPeriod string
+}
+
+func sameMetadata(s *pb.SourceSeries, n *nodeObs) bool {
+	return (s.ProvenanceUrl == n.provenanceUrl &&
+		s.ImportName == n.importName &&
+		s.MeasurementMethod == n.measurementMethod &&
+		s.Unit == n.unit &&
+		s.ScalingFactor == n.scalingFactor &&
+		s.ObservationPeriod == n.observationPeriod)
 }
 
 // addRow adds one csv row to memdb
@@ -461,26 +478,24 @@ func (memDb *MemDb) addRow(
 	for node, meta := range schemaMapping.NodeSchema {
 		if typ, ok := meta["typeOf"]; ok && typ == "StatVarObservation" {
 			allNodes[node] = &nodeObs{
-				statVar: meta["variableMeasured"],
-				meta: &pb.StatMetadata{
-					ProvenanceUrl: memDb.config.ProvenanceUrl,
-					ImportName:    memDb.config.ImportName,
-				},
+				statVar:       meta["variableMeasured"],
+				provenanceUrl: memDb.config.ProvenanceUrl,
+				importName:    memDb.config.ImportName,
 			}
 		}
 		// TODO: handle the case when meta data is specified in the column:
 		// https://github.com/datacommonsorg/data/blob/master/scripts/un/energy/un_energy.tmcf#L8-L10
 		if v, ok := meta["measurementMethod"]; ok {
-			allNodes[node].meta.MeasurementMethod = v
+			allNodes[node].measurementMethod = v
 		}
 		if v, ok := meta["unit"]; ok {
-			allNodes[node].meta.Unit = v
+			allNodes[node].unit = v
 		}
 		if v, ok := meta["scalingFactor"]; ok {
-			allNodes[node].meta.ScalingFactor = v
+			allNodes[node].scalingFactor = v
 		}
 		if v, ok := meta["observationPeriod"]; ok {
-			allNodes[node].meta.ObservationPeriod = v
+			allNodes[node].observationPeriod = v
 		}
 	}
 
@@ -517,10 +532,10 @@ func (memDb *MemDb) addRow(
 	// Populate observation in the final result.
 	for _, obs := range allNodes {
 		if _, ok := memDb.statSeries[obs.statVar]; !ok {
-			memDb.statSeries[obs.statVar] = map[string][]*pb.Series{}
+			memDb.statSeries[obs.statVar] = map[string][]*pb.SourceSeries{}
 		}
 		if _, ok := memDb.statSeries[obs.statVar][obs.place]; !ok {
-			memDb.statSeries[obs.statVar][obs.place] = []*pb.Series{}
+			memDb.statSeries[obs.statVar][obs.place] = []*pb.SourceSeries{}
 		}
 		if obs.date != "" && obs.value != "" {
 			v, err := strconv.ParseFloat(obs.value, 64)
@@ -529,7 +544,7 @@ func (memDb *MemDb) addRow(
 			}
 			exist := false
 			for _, series := range memDb.statSeries[obs.statVar][obs.place] {
-				if series.Metadata.String() == obs.meta.String() {
+				if sameMetadata(series, obs) {
 					series.Val[obs.date] = v
 					exist = true
 				}
@@ -537,9 +552,14 @@ func (memDb *MemDb) addRow(
 			if !exist {
 				memDb.statSeries[obs.statVar][obs.place] = append(
 					memDb.statSeries[obs.statVar][obs.place],
-					&pb.Series{
-						Val:      map[string]float64{obs.date: v},
-						Metadata: obs.meta,
+					&pb.SourceSeries{
+						Val:               map[string]float64{obs.date: v},
+						ImportName:        obs.importName,
+						MeasurementMethod: obs.measurementMethod,
+						Unit:              obs.unit,
+						ScalingFactor:     obs.scalingFactor,
+						ObservationPeriod: obs.observationPeriod,
+						ProvenanceUrl:     obs.provenanceUrl,
 					},
 				)
 			}

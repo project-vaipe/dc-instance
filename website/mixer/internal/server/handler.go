@@ -34,7 +34,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertylabel"
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertyvalue"
 	"github.com/datacommonsorg/mixer/internal/server/v0/statpoint"
-	"github.com/datacommonsorg/mixer/internal/server/v0/statvarsummary"
 	"github.com/datacommonsorg/mixer/internal/server/v0/triple"
 	"google.golang.org/protobuf/encoding/protojson"
 )
@@ -125,14 +124,40 @@ func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest,
 func (s *Server) GetRelatedLocations(
 	ctx context.Context, in *pb.GetRelatedLocationsRequest,
 ) (*pb.GetRelatedLocationsResponse, error) {
-	return place.GetRelatedLocations(ctx, in, s.store)
+	localResp, err := place.GetRelatedLocations(ctx, in, s.store)
+	if err != nil {
+		return nil, err
+	}
+	if len(localResp.GetData()) == 0 &&
+		s.metadata.RemoteMixerDomain != "" {
+		remoteResp := &pb.GetRelatedLocationsResponse{}
+		if err := fetchRemote(
+			s.metadata, s.httpClient, "/v1/place/related", in, remoteResp); err != nil {
+			return nil, err
+		}
+		return remoteResp, nil
+	}
+	return localResp, nil
 }
 
 // GetLocationsRankings implements API for Mixer.GetLocationsRankings.
 func (s *Server) GetLocationsRankings(
 	ctx context.Context, in *pb.GetLocationsRankingsRequest,
 ) (*pb.GetLocationsRankingsResponse, error) {
-	return place.GetLocationsRankings(ctx, in, s.store)
+	localResp, err := place.GetLocationsRankings(ctx, in, s.store)
+	if err != nil {
+		return nil, err
+	}
+	if len(localResp.GetData()) == 0 &&
+		s.metadata.RemoteMixerDomain != "" {
+		remoteResp := &pb.GetLocationsRankingsResponse{}
+		if err := fetchRemote(
+			s.metadata, s.httpClient, "/v1/place/ranking", in, remoteResp); err != nil {
+			return nil, err
+		}
+		return remoteResp, nil
+	}
+	return localResp, nil
 }
 
 // GetPlaceStatDateWithinPlace implements API for Mixer.GetPlaceStatDateWithinPlace.
@@ -163,20 +188,6 @@ func (s *Server) GetEntityStatVarsUnionV1(
 	ctx context.Context, in *pb.GetEntityStatVarsUnionRequest,
 ) (*pb.GetEntityStatVarsUnionResponse, error) {
 	return statvar.GetEntityStatVarsUnionV1(ctx, in, s.store)
-}
-
-// GetStatVarSummary implements API for Mixer.GetStatVarSummary.
-func (s *Server) GetStatVarSummary(
-	ctx context.Context, in *pb.GetStatVarSummaryRequest,
-) (*pb.GetStatVarSummaryResponse, error) {
-	return statvarsummary.GetStatVarSummary(ctx, in, s.store)
-}
-
-// GetStatVarMatch implements API for Mixer.GetStatVarMatch.
-func (s *Server) GetStatVarMatch(
-	ctx context.Context, in *pb.GetStatVarMatchRequest,
-) (*pb.GetStatVarMatchResponse, error) {
-	return statvar.GetStatVarMatch(ctx, in, s.store, s.cache)
 }
 
 // SearchStatVar implements API for Mixer.SearchStatVar.
@@ -257,9 +268,10 @@ func (s *Server) GetVersion(
 	ctx context.Context, in *pb.GetVersionRequest,
 ) (*pb.GetVersionResponse, error) {
 	return &pb.GetVersionResponse{
-		Tables:   s.store.BtGroup.TableNames(),
-		Bigquery: s.metadata.BigQueryDataset,
-		GitHash:  os.Getenv("MIXER_HASH"),
+		Tables:            s.store.BtGroup.TableNames(),
+		Bigquery:          s.metadata.BigQueryDataset,
+		GitHash:           os.Getenv("MIXER_HASH"),
+		RemoteMixerDomain: s.metadata.RemoteMixerDomain,
 	}, nil
 }
 

@@ -21,8 +21,6 @@ import (
 	cbt "cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 )
 
 // BtRow contains the BT read key tokens and the cache data.
@@ -81,10 +79,29 @@ func Read(
 	action func([]byte) (interface{}, error),
 ) ([][]BtRow, error) {
 	accs := []*Accessor{}
-	for i := 0; i < len(btGroup.Tables()); i++ {
+	tables := btGroup.Tables(nil)
+	for i := 0; i < len(tables); i++ {
 		accs = append(accs, &Accessor{i, body})
 	}
-	return ReadWithGroupRowList(ctx, btGroup, prefix, accs, action)
+	return ReadWithGroupRowList(ctx, tables, prefix, accs, action)
+}
+
+// FilterRead reads BigTable rows from multiple Bigtable in parallel.
+// This will filter the table based on given function.
+func ReadWithFilter(
+	ctx context.Context,
+	btGroup *Group,
+	prefix string,
+	body [][]string,
+	action func([]byte) (interface{}, error),
+	filter func(*Table) bool,
+) ([][]BtRow, error) {
+	tables := btGroup.Tables(filter)
+	accs := []*Accessor{}
+	for i := 0; i < len(tables); i++ {
+		accs = append(accs, &Accessor{i, body})
+	}
+	return ReadWithGroupRowList(ctx, tables, prefix, accs, action)
 }
 
 // ReadWithGroupRowList reads BigTable rows from multiple Bigtable in parallel.
@@ -94,14 +111,14 @@ func Read(
 // needed by the pagination APIs.
 func ReadWithGroupRowList(
 	ctx context.Context,
-	btGroup *Group,
+	tables []*cbt.Table,
 	prefix string,
 	accs []*Accessor,
 	unmarshalFunc func([]byte) (interface{}, error),
 ) ([][]BtRow, error) {
-	tables := btGroup.Tables()
 	if len(tables) == 0 {
-		return nil, status.Errorf(codes.NotFound, "Bigtable instance is not specified")
+		// Custom DC could have no bigtable but read all data from remote mixer
+		return nil, nil
 	}
 	rowListMap := map[int]cbt.RowList{}
 	for _, acc := range accs {

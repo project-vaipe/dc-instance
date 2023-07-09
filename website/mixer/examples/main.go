@@ -21,7 +21,10 @@ import (
 	"log"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 )
 
 var (
@@ -35,14 +38,14 @@ func main() {
 
 	// Set up a connection to the server.
 	conn, err := grpc.Dial(*addr,
-		grpc.WithInsecure(),
+		grpc.WithTransportCredentials(insecure.NewCredentials()),
 		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(100000000 /* 100M */)),
 	)
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
 	defer conn.Close()
-	c := pb.NewMixerClient(conn)
+	c := pbs.NewMixerClient(conn)
 	ctx := context.Background()
 
 	{
@@ -91,6 +94,30 @@ func main() {
 			log.Fatalf("could not GetStats: %s", err)
 		}
 		fmt.Printf("%s\n", r.GetPayload())
+	}
+
+	{
+		// Get variable info
+		req := &pbv1.BulkVariableInfoRequest{
+			Nodes: []string{"Mean_NetMeasure_Income_Farm"},
+		}
+		r, err := c.BulkVariableInfo(ctx, req)
+		if err != nil {
+			log.Fatalf("could not BulkVariableInfo: %s", err)
+		}
+		fmt.Printf("%v\n", r)
+	}
+
+	{
+		// Get variable ancestors
+		req := &pbv1.VariableAncestorsRequest{
+			Node: "WithdrawalRate_Water_Irrigation",
+		}
+		r, err := c.VariableAncestors(ctx, req)
+		if err != nil {
+			log.Fatalf("could not VariableAncestors: %s", err)
+		}
+		fmt.Printf("%v\n", r)
 	}
 
 }

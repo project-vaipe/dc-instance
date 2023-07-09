@@ -28,11 +28,19 @@ namespace:
   create: false
   name: "mixer"
 
+# Everything custom DC related.
+customDC:
+  enabled: false
+
 # Mixer service config.
 mixer:
-  gcpProjectID:
+  hostProject:
   githash:
 
+  useBaseBigtable: true
+  useBranchBigtable: true
+  useCustomBigtable: false
+  foldRemoteRootSvg: false
   useTMCFCSVData: false
   # Name of the GCS bucket without scheme.
   # Example: datcom-public
@@ -44,6 +52,8 @@ mixer:
   bigqueryOnly: false
   # Example: google.com:datcom-store-dev.dc_v3_encode_clustered
   bigqueryTableRef:
+  # A special svg used to re-group the hierarchy
+  remoteMixerDomain: ""
 
   # URL root for the mixer service launched.
   # Example: dev.api.datacommons.org
@@ -93,52 +103,57 @@ memdbJSON: ""
 # the entire serviceGroups below into the custom values yaml file,
 # and make changes to it.
 serviceGroups:
-  - svg:
-      urlPaths:
-        - "/place/stat-var-group/*"
-        - "/stat-var/*"
-        - "/v1/info/variable-group/*"
-        - "/v1/variable/*"
-        - "/v1/bulk/info/variable-group"
-        - "/v1/bulk/info/variable"
-      replicas:
-        default: 2
-        min: 2
-        max: 2
-      resources:
-        memoryRequest: "8G"
-        memoryLimit: "8G"
-      useSearch: true
+  svg:
+    urlPaths:
+      - "/place/stat-var-group/*"
+      - "/stat-var/*"
+      - "/v1/info/variable-group/*"
+      - "/v1/variable/*"
+      - "/v1/bulk/info/variable-group"
+    replicas: 1
+    resources:
+      memoryRequest: "8G"
+      memoryLimit: "8G"
+    useSearch: true
     # If the name of the recon service is changed here,
     # please also change the name in the deployment.yaml template.
-  - recon:
-      urlPaths:
-        - "/v1/recon/*"
-      replicas:
-        default: 4
-        min: 4
-        max: 4
-      resources:
-        memoryRequest: "400M"
-        memoryLimit: "400M"
-  - observation:
-      urlPaths:
-        - "/v1/observations/*"
-        - "/v1/bulk/observations/*"
-      replicas:
-        default: 4
-        min: 4
-        max: 4
-      resources:
-        memoryRequest: "4G"
-        memoryLimit: "4G"
-  - default:
-      urlPaths:
-        - "/*"
-      replicas:
-        default: 4
-        min: 4
-        max: 4
-      resources:
-        memoryRequest: "4G"
-        memoryLimit: "4G"
+  recon:
+    urlPaths:
+      - "/v1/recon/*"
+      - "/v2/resolve"
+    replicas: 1
+    resources:
+      memoryRequest: "400M"
+      memoryLimit: "400M"
+  observation:
+    urlPaths:
+      - "/bulk/stats"
+      - "/stat/*"
+      - "/v1/observations/*"
+      - "/v1/bulk/observations/*"
+      - "/v2/observation"
+    replicas: 1
+    resources:
+      memoryRequest: "4G"
+      memoryLimit: "4G"
+  node:
+    urlPaths:
+      - "/node/*"
+      - "/v1/triples/*"
+      - "/v1/properties/*"
+      - "/v1/property/values/*"
+      - "/v1/bulk/property/values/*"
+      - "/v1/bulk/triples/*"
+      - "/v1/bulk/properties/*"
+      - "/v2/node"
+    replicas: 1
+    resources:
+      memoryRequest: "2G"
+      memoryLimit: "2G"
+  default:
+    urlPaths:
+      - "/*"
+    replicas: 1
+    resources:
+      memoryRequest: "2G"
+      memoryLimit: "2G"

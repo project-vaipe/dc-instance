@@ -1,1 +1,2 @@
-embeddings_file: embeddings_us_filtered_2023_03_31_11_36_22.csv
+small: embeddings_small_2023_05_24_23_17_03.csv
+medium: embeddings_medium_2023_05_24_22_15_24.csv

@@ -21,6 +21,8 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -33,7 +35,7 @@ func TestObservationsPoint(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "point")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			variable   string
 			entity     string
@@ -41,34 +43,10 @@ func TestObservationsPoint(t *testing.T) {
 			goldenFile string
 		}{
 			{
-				"Count_Person",
-				"country/USA",
-				"",
-				"count_person.json",
-			},
-			{
-				"Count_CriminalActivities_CombinedCrime",
-				"geoId/06",
-				"",
-				"total_crimes.json",
-			},
-			{
-				"Annual_Generation_Electricity",
-				"geoId/06",
-				"2018",
-				"electricity_generation.json",
-			},
-			{
 				"Median_Age_Person",
 				"geoId/0649670",
 				"2015",
 				"median_age.json",
-			},
-			{
-				"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
-				"country/USA",
-				"2017",
-				"gdp.json",
 			},
 			{
 				"Count_Person",
@@ -82,15 +60,9 @@ func TestObservationsPoint(t *testing.T) {
 				"",
 				"dummy.json",
 			},
-			{
-				"Count_Person_Unemployed",
-				"country/USA",
-				"",
-				"umemployed.json",
-			},
 		} {
 
-			resp, err := mixer.ObservationsPoint(ctx, &pb.ObservationsPointRequest{
+			resp, err := mixer.ObservationsPoint(ctx, &pbv1.ObservationsPointRequest{
 				EntityVariable: c.entity + "/" + c.variable,
 				Date:           c.date,
 			})

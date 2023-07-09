@@ -17,7 +17,7 @@
         "searchNames": [
           "Gender Income Inequality of Person"
         ],
-        "displayName": "Gender Income Inequality",
+        "displayName": "Income Inequality Between Men and Women of Working Age",
         "definition": "mp=genderIncomeInequality,pt=Person",
         "hasData": true
       },
@@ -35,7 +35,7 @@
         "searchNames": [
           "Median Age of Person"
         ],
-        "displayName": "Median Age",
+        "displayName": "Median Age of Population",
         "definition": "st=medianValue,mp=age,pt=Person",
         "hasData": true
       },
@@ -44,7 +44,7 @@
         "searchNames": [
           "Median Income of Person"
         ],
-        "displayName": "Median Income",
+        "displayName": "Median Income of a Population",
         "definition": "st=medianValue,mp=income,pt=Person",
         "hasData": true
       },
@@ -55,15 +55,6 @@
         ],
         "displayName": "Percent of Internet Users",
         "definition": "md=PerCapita,mp=count,pt=Person,isInternetUser=True",
-        "hasData": true
-      },
-      {
-        "id": "Count_Person",
-        "searchNames": [
-          "Population Count of Person"
-        ],
-        "displayName": "Population",
-        "definition": "mp=count,pt=Person",
         "hasData": true
       },
       {
@@ -89,8 +80,17 @@
         "searchNames": [
           "Growth Rate Population Count of Person"
         ],
-        "displayName": "Population Growth Rate",
+        "displayName": "Rate of Population Growth",
         "definition": "st=growthRate,mp=count,pt=Person",
+        "hasData": true
+      },
+      {
+        "id": "Count_Person",
+        "searchNames": [
+          "Population Count of Person"
+        ],
+        "displayName": "Total Population",
+        "definition": "mp=count,pt=Person",
         "hasData": true
       }
     ],
@@ -99,7 +99,7 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 20633
+        "descendentStatVarCount": 22180
       },
       {
         "id": "dc/g/Household_BenefitsStatus",
@@ -147,7 +147,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 18775
+        "descendentStatVarCount": 19810
       },
       {
         "id": "dc/g/Person_HealthInsurance",
@@ -159,7 +159,7 @@
         "id": "dc/g/Household",
         "specializedEntity": "Household",
         "displayName": "Household",
-        "descendentStatVarCount": 1559
+        "descendentStatVarCount": 1573
       },
       {
         "id": "dc/g/Person_HouseholdIncome",
@@ -201,13 +201,13 @@
         "id": "dc/g/Person_LiteracyStatus",
         "specializedEntity": "Literacy Status",
         "displayName": "Person by Literacy Status",
-        "descendentStatVarCount": 216
+        "descendentStatVarCount": 268
       },
       {
         "id": "dc/g/Person_MaritalStatus",
         "specializedEntity": "Marital Status",
         "displayName": "Person by Marital Status",
-        "descendentStatVarCount": 505
+        "descendentStatVarCount": 752
       },
       {
         "id": "dc/g/Person_MemberStatus",
@@ -243,7 +243,7 @@
         "id": "dc/g/Person_PlaceOfResidenceClassification",
         "specializedEntity": "Place of Residence Classification",
         "displayName": "Person by Place of Residence Classification",
-        "descendentStatVarCount": 2460
+        "descendentStatVarCount": 3115
       },
       {
         "id": "dc/g/Person_PovertyStatus",
@@ -255,19 +255,19 @@
         "id": "dc/g/Person_Race",
         "specializedEntity": "Race",
         "displayName": "Person by Race",
-        "descendentStatVarCount": 17104
+        "descendentStatVarCount": 17135
       },
       {
         "id": "dc/g/Person_Religion",
         "specializedEntity": "Religion",
         "displayName": "Person by Religion",
-        "descendentStatVarCount": 1872
+        "descendentStatVarCount": 1876
       },
       {
         "id": "dc/g/Residence",
         "specializedEntity": "Residence",
         "displayName": "Residence",
-        "descendentStatVarCount": 3614
+        "descendentStatVarCount": 4269
       },
       {
         "id": "dc/g/Household_TransportationType",
@@ -276,7 +276,7 @@
         "descendentStatVarCount": 104
       }
     ],
-    "descendentStatVarCount": 31999,
+    "descendentStatVarCount": 33601,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

@@ -20,7 +20,8 @@ import (
 	"runtime"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -33,7 +34,7 @@ func TestBulkObservationsSeries(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "bulk_series")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			variables  []string
 			entities   []string
@@ -44,11 +45,11 @@ func TestBulkObservationsSeries(t *testing.T) {
 				[]string{
 					"dummy",
 					"Count_Person",
+					"WithdrawalRate_Water_Aquaculture",
 					"Count_CriminalActivities_CombinedCrime",
 					"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
 					"Annual_Generation_Electricity",
 					"Count_Person_Unemployed",
-					"CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase",
 					"Count_Person_FoodInsecure",
 				},
 				[]string{"dummy", "country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
@@ -63,7 +64,7 @@ func TestBulkObservationsSeries(t *testing.T) {
 				} else {
 					goldenFile = "preferred_" + goldenFile
 				}
-				resp, err := mixer.BulkObservationsSeries(ctx, &pb.BulkObservationsSeriesRequest{
+				resp, err := mixer.BulkObservationsSeries(ctx, &pbv1.BulkObservationsSeriesRequest{
 					Variables: c.variables,
 					Entities:  c.entities,
 					AllFacets: allFacets,
@@ -81,7 +82,7 @@ func TestBulkObservationsSeries(t *testing.T) {
 					test.UpdateGolden(resp, goldenPath, goldenFile)
 					continue
 				}
-				var expected pb.BulkObservationsSeriesResponse
+				var expected pbv1.BulkObservationsSeriesResponse
 				if err = test.ReadJSON(goldenPath, goldenFile, &expected); err != nil {
 					t.Errorf("Can not Unmarshal golden file: %s", err)
 					continue

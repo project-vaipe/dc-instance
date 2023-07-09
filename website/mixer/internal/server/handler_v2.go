@@ -12,73 +12,229 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package server
+// Package server is the main server
 package server
 
 import (
 	"context"
 
-	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
-	v2pv "github.com/datacommonsorg/mixer/internal/server/v2/propertyvalues"
+	"github.com/datacommonsorg/mixer/internal/merger"
+	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/util"
+	"golang.org/x/sync/errgroup"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
 
-// QueryV2 implements API for mixer.QueryV2.
-func (s *Server) QueryV2(
-	ctx context.Context, in *pb.QueryV2Request,
-) (*pb.QueryV2Response, error) {
-	arcStrings, err := v2.SplitArc(in.GetProperty())
-	if err != nil {
+// V2Resolve implements API for mixer.V2Resolve.
+func (s *Server) V2Resolve(
+	ctx context.Context, in *pbv2.ResolveRequest,
+) (*pbv2.ResolveResponse, error) {
+	errGroup, errCtx := errgroup.WithContext(ctx)
+	respChan := make(chan *pbv2.ResolveResponse, 2)
+
+	errGroup.Go(func() error {
+		resp, err := s.V2ResolveCore(errCtx, in)
+		if err != nil {
+			return err
+		}
+		respChan <- resp
+		return nil
+	})
+
+	if s.metadata.RemoteMixerDomain != "" {
+		errGroup.Go(func() error {
+			remoteResp := &pbv2.ResolveResponse{}
+			err := fetchRemote(s.metadata, s.httpClient, "/v2/resolve", in, remoteResp)
+			if err != nil {
+				return err
+			}
+			respChan <- remoteResp
+			return nil
+		})
+	} else {
+		respChan <- nil
+	}
+
+	if err := errGroup.Wait(); err != nil {
 		return nil, err
 	}
-	arcs := []*v2.Arc{}
-	for _, s := range arcStrings {
-		arc, err := v2.ParseArc(s)
+	close(respChan)
+
+	resp1, resp2 := <-respChan, <-respChan
+	return merger.MergeResolve(resp1, resp2), nil
+}
+
+// V2Node implements API for mixer.V2Node.
+func (s *Server) V2Node(
+	ctx context.Context, in *pbv2.NodeRequest,
+) (*pbv2.NodeResponse, error) {
+	errGroup, errCtx := errgroup.WithContext(ctx)
+	localRespChan := make(chan *pbv2.NodeResponse, 1)
+	remoteRespChan := make(chan *pbv2.NodeResponse, 1)
+
+	if in.GetNextToken() == "" {
+		// When request |next_token| is empty, there are two cases:
+		// 1. The call does not need pagination, e.g. PropertyLabels.
+		// 2. The call needs pagination, but this is the first call/page.
+		// In both cases, we need to read from both local and remote, and merge.
+
+		errGroup.Go(func() error {
+			resp, err := s.V2NodeCore(errCtx, in)
+			if err != nil {
+				return err
+			}
+			localRespChan <- resp
+			return nil
+		})
+
+		if s.metadata.RemoteMixerDomain != "" {
+			errGroup.Go(func() error {
+				remoteResp := &pbv2.NodeResponse{}
+				err := fetchRemote(s.metadata, s.httpClient, "/v2/node", in, remoteResp)
+				if err != nil {
+					return err
+				}
+				remoteRespChan <- remoteResp
+				return nil
+			})
+		} else {
+			remoteRespChan <- nil
+		}
+	} else { // in.GetNextToken() != ""
+		// In this case, the call needs pagination, and it's not the first call/page.
+
+		paginationInfo, err := pagination.Decode(in.GetNextToken())
 		if err != nil {
 			return nil, err
 		}
-		arcs = append(arcs, arc)
-	}
-	// TODO: abstract this out to a router module.
-	// Simple Property Values
-	// Examples:
-	//   ->name
-	//   <-containedInPlace
-	//   ->[name, address]
-	if len(arcs) == 1 {
-		arc := arcs[0]
-		direction := util.DirectionOut
-		if !arc.Out {
-			direction = util.DirectionIn
+		cursorGroups := paginationInfo.GetCursorGroups()
+		remotePaginationInfo := paginationInfo.GetRemotePaginationInfo()
+
+		if len(cursorGroups) > 0 {
+			// Non-empty |cursor_groups|, read from local, for non-first page.
+			errGroup.Go(func() error {
+				resp, err := s.V2NodeCore(ctx, in)
+				if err != nil {
+					return err
+				}
+				localRespChan <- resp
+				return nil
+			})
+		} else {
+			localRespChan <- nil
 		}
-		if arc.SingleProp != "" && arc.Wildcard == "" {
-			// Examples:
-			//   ->name
-			//   <-containedInPlace
-			return v2pv.API(
-				ctx,
-				s.store,
-				in.GetNodes(),
-				[]string{arc.SingleProp},
-				direction,
-				int(in.GetLimit()),
-				in.NextToken,
-			)
-		} else if len(arc.BracketProps) > 0 {
-			// Examples:
-			//   ->[name, address]
-			return v2pv.API(
-				ctx,
-				s.store,
-				in.GetNodes(),
-				arc.BracketProps,
-				direction,
-				int(in.GetLimit()),
-				in.GetNextToken(),
-			)
+
+		if s.metadata.RemoteMixerDomain != "" && remotePaginationInfo != nil {
+			// Read from remote, for non-first page.
+
+			errGroup.Go(func() error {
+				// Update |next_token| before sending the request to remote.
+				// Peel off one layer of |remote_pagination_info| hierarchy.
+				remoteReqNextToken, err := util.EncodeProto(remotePaginationInfo)
+				if err != nil {
+					return err
+				}
+				in.NextToken = remoteReqNextToken
+
+				// Call remote.
+				remoteResp := &pbv2.NodeResponse{}
+				if err := fetchRemote(
+					s.metadata, s.httpClient, "/v2/node", in, remoteResp); err != nil {
+					return err
+				}
+				remoteRespChan <- remoteResp
+				return nil
+			})
+		} else {
+			remoteRespChan <- nil
 		}
 	}
-	return nil, nil
+
+	if err := errGroup.Wait(); err != nil {
+		return nil, err
+	}
+	close(localRespChan)
+	close(remoteRespChan)
+
+	localResp, remoteResp := <-localRespChan, <-remoteRespChan
+	return merger.MergeNode(localResp, remoteResp)
+}
+
+// V2Event implements API for mixer.V2Event.
+func (s *Server) V2Event(
+	ctx context.Context, in *pbv2.EventRequest,
+) (*pbv2.EventResponse, error) {
+	errGroup, errCtx := errgroup.WithContext(ctx)
+	respChan := make(chan *pbv2.EventResponse, 2)
+
+	errGroup.Go(func() error {
+		resp, err := s.V2EventCore(errCtx, in)
+		if err != nil {
+			return err
+		}
+		respChan <- resp
+		return nil
+	})
+
+	if s.metadata.RemoteMixerDomain != "" {
+		errGroup.Go(func() error {
+			remoteResp := &pbv2.EventResponse{}
+			err := fetchRemote(s.metadata, s.httpClient, "/v2/event", in, remoteResp)
+			if err != nil {
+				return err
+			}
+			respChan <- remoteResp
+			return nil
+		})
+	} else {
+		respChan <- nil
+	}
+
+	if err := errGroup.Wait(); err != nil {
+		return nil, err
+	}
+	close(respChan)
+
+	resp1, resp2 := <-respChan, <-respChan
+	return merger.MergeEvent(resp1, resp2), nil
+}
+
+// V2Observation implements API for mixer.V2Observation.
+func (s *Server) V2Observation(
+	ctx context.Context, in *pbv2.ObservationRequest,
+) (*pbv2.ObservationResponse, error) {
+	errGroup, errCtx := errgroup.WithContext(ctx)
+	respChan := make(chan *pbv2.ObservationResponse, 2)
+
+	errGroup.Go(func() error {
+		resp, err := s.V2ObservationCore(errCtx, in)
+		if err != nil {
+			return err
+		}
+		respChan <- resp
+		return nil
+	})
+
+	if s.metadata.RemoteMixerDomain != "" {
+		errGroup.Go(func() error {
+			remoteResp := &pbv2.ObservationResponse{}
+			err := fetchRemote(s.metadata, s.httpClient, "/v2/observation", in, remoteResp)
+			if err != nil {
+				return err
+			}
+			respChan <- remoteResp
+			return nil
+		})
+	} else {
+		respChan <- nil
+	}
+
+	if err := errGroup.Wait(); err != nil {
+		return nil, err
+	}
+	close(respChan)
+
+	resp1, resp2 := <-respChan, <-respChan
+	return merger.MergeObservation(resp1, resp2), nil
 }

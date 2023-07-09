@@ -182,6 +182,11 @@
               "facet": "3981252704"
             },
             {
+              "date": "2010",
+              "value": 40117096,
+              "facet": "2052219360"
+            },
+            {
               "date": "2016",
               "value": 43847000,
               "facet": "473499523"
@@ -285,6 +290,11 @@
               "date": "2021",
               "value": 25688079,
               "facet": "3981252704"
+            },
+            {
+              "date": "2021",
+              "value": 25422788,
+              "facet": "678784946"
             },
             {
               "date": "2019",
@@ -742,6 +752,11 @@
               "facet": "3981252704"
             },
             {
+              "date": "2022",
+              "value": 207750291,
+              "facet": "3748004783"
+            },
+            {
               "date": "2018",
               "value": 208495000,
               "facet": "1151455814"
@@ -1120,6 +1135,11 @@
               "date": "2021",
               "value": 51516562,
               "facet": "3981252704"
+            },
+            {
+              "date": "2020",
+              "value": 50911747,
+              "facet": "4140854811"
             },
             {
               "date": "2019",
@@ -2420,6 +2440,11 @@
               "date": "2021",
               "value": 273753191,
               "facet": "3981252704"
+            },
+            {
+              "date": "2022",
+              "value": 275773800,
+              "facet": "318580725"
             },
             {
               "date": "2019",
@@ -3890,6 +3915,11 @@
               "date": "2021",
               "value": 213401323,
               "facet": "3981252704"
+            },
+            {
+              "date": "2016",
+              "value": 193392517,
+              "facet": "563701067"
             },
             {
               "date": "2016",
@@ -5978,6 +6008,10 @@
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
+    "2052219360": {
+      "import_name": "Argentina_Census",
+      "provenance_url": "https://www.indec.gob.ar"
+    },
     "2123271870": {
       "import_name": "IndiaCensus_Primary",
       "provenance_url": "https://censusindia.gov.in/"
@@ -6033,6 +6067,10 @@
       "provenance_url": "http://www.dst.dk/en",
       "measurement_method": "StatisticsDenmark"
     },
+    "318580725": {
+      "import_name": "Indonesia_Census",
+      "provenance_url": "https://www.bps.go.id/"
+    },
     "3205948815": {
       "import_name": "StatisticsFinland",
       "provenance_url": "https://www.stat.fi/index_en.html",
@@ -6043,6 +6081,11 @@
       "provenance_url": "https://www.ssb.no/en",
       "measurement_method": "StatisticsNorway"
     },
+    "3748004783": {
+      "import_name": "Brazil_Census",
+      "provenance_url": "https://www.ibge.gov.br/en/statistics/social/population.html",
+      "observation_period": "P1Y"
+    },
     "3893789967": {
       "import_name": "ItalyNIS",
       "provenance_url": "http://demo.istat.it/index_e.html",
@@ -6052,6 +6095,10 @@
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y"
+    },
+    "4140854811": {
+      "import_name": "Colombia_Census",
+      "provenance_url": "https://www.dane.gov.co/index.php/en/statistics-by-topic"
     },
     "4194503167": {
       "import_name": "StatisticsCanada",
@@ -6074,10 +6121,18 @@
       "measurement_method": "WorldBankSubnationalPopulationEstimate",
       "observation_period": "P1Y"
     },
+    "563701067": {
+      "import_name": "NigeriaStatistics",
+      "provenance_url": "https://nigeria.opendataforafrica.org"
+    },
     "650668249": {
       "import_name": "UnitedKingdomONS",
       "provenance_url": "https://www.ons.gov.uk",
       "measurement_method": "UnitedKingdomONS"
+    },
+    "678784946": {
+      "import_name": "AustraliaStatistics",
+      "provenance_url": "https://www.abs.gov.au/statistics"
     },
     "681041463": {
       "import_name": "GermanyDestatis",

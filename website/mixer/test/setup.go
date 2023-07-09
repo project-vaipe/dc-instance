@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ import (
 	"strings"
 
 	"cloud.google.com/go/bigquery"
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -43,10 +43,11 @@ import (
 
 // TestOption holds the options for integration test.
 type TestOption struct {
-	UseCache       bool
-	UseMemdb       bool
-	UseCustomTable bool
-	SearchOptions  server.SearchOptions
+	UseCache          bool
+	UseMemdb          bool
+	UseCustomTable    bool
+	SearchOptions     server.SearchOptions
+	RemoteMixerDomain string
 }
 
 var (
@@ -64,18 +65,19 @@ const (
 	bigqueryBillingProject = "datcom-store"
 	tmcfCsvBucket          = "datcom-public"
 	tmcfCsvPrefix          = "food"
-	mixerProject           = "datcom-ci"
+	hostProject            = "datcom-ci"
 )
 
 // Setup creates local server and client.
-func Setup(option ...*TestOption) (pb.MixerClient, error) {
-	useCache, useMemdb, useCustomTable := false, false, false
+func Setup(option ...*TestOption) (pbs.MixerClient, error) {
+	useCache, useMemdb, useCustomTable, remoteMixerDomain := false, false, false, ""
 	var searchOptions server.SearchOptions
 	if len(option) == 1 {
 		useCache = option[0].UseCache
 		useMemdb = option[0].UseMemdb
 		useCustomTable = option[0].UseCustomTable
 		searchOptions = option[0].SearchOptions
+		remoteMixerDomain = option[0].RemoteMixerDomain
 	}
 	return setupInternal(
 		"../deploy/storage/bigquery.version",
@@ -86,13 +88,15 @@ func Setup(option ...*TestOption) (pb.MixerClient, error) {
 		useMemdb,
 		useCustomTable,
 		searchOptions,
+		remoteMixerDomain,
 	)
 }
 
 func setupInternal(
 	bigqueryVersionFile, baseBigtableInfoYaml, testBigtableInfoYaml, mcfPath string,
 	useCache, useMemdb, useCustomTable bool, searchOptions server.SearchOptions,
-) (pb.MixerClient, error) {
+	remoteMixerDomain string,
+) (pbs.MixerClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	bqTableID, _ := os.ReadFile(path.Join(path.Dir(filename), bigqueryVersionFile))
@@ -117,7 +121,8 @@ func setupInternal(
 		log.Fatalf("failed to create Bigquery client: %v", err)
 	}
 
-	metadata, err := server.NewMetadata(mixerProject, strings.TrimSpace(string(bqTableID)), schemaPath)
+	metadata, err := server.NewMetadata(
+		hostProject, strings.TrimSpace(string(bqTableID)), schemaPath, remoteMixerDomain, false)
 	if err != nil {
 		return nil, err
 	}
@@ -146,7 +151,7 @@ func setupInternal(
 		cache = &resource.Cache{}
 	}
 
-	mapsClient, err := util.MapsClient(ctx, metadata.MixerProject)
+	mapsClient, err := util.MapsClient(ctx, metadata.HostProject)
 	if err != nil {
 		return nil, err
 	}
@@ -155,7 +160,7 @@ func setupInternal(
 }
 
 // SetupBqOnly creates local server and client with access to BigQuery only.
-func SetupBqOnly() (pb.MixerClient, error) {
+func SetupBqOnly() (pbs.MixerClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	bqTableID, _ := os.ReadFile(
@@ -170,7 +175,10 @@ func SetupBqOnly() (pb.MixerClient, error) {
 	metadata, err := server.NewMetadata(
 		"",
 		strings.TrimSpace(string(bqTableID)),
-		schemaPath)
+		schemaPath,
+		"",
+		false,
+	)
 	if err != nil {
 		return nil, err
 	}
@@ -187,10 +195,10 @@ func newClient(
 	metadata *resource.Metadata,
 	cache *resource.Cache,
 	mapsClient *maps.Client,
-) (pb.MixerClient, error) {
+) (pbs.MixerClient, error) {
 	mixerServer := server.NewMixerServer(mixerStore, metadata, cache, mapsClient)
 	srv := grpc.NewServer()
-	pb.RegisterMixerServer(srv, mixerServer)
+	pbs.RegisterMixerServer(srv, mixerServer)
 	reflection.Register(srv)
 	lis, err := net.Listen("tcp", "localhost:0")
 	if err != nil {
@@ -212,7 +220,7 @@ func newClient(
 	if err != nil {
 		return nil, err
 	}
-	mixerClient := pb.NewMixerClient(conn)
+	mixerClient := pbs.NewMixerClient(conn)
 	return mixerClient, nil
 }
 

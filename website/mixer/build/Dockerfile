@@ -23,7 +23,7 @@
 
 # =========  protoc stage ==========
 
-FROM golang:1.19 AS go-protoc
+FROM golang:1.20.2 AS go-protoc
 WORKDIR /mixer
 # Install protoc
 RUN apt-get update && \
@@ -37,8 +37,8 @@ ENV PATH="${PATH}:/mixer/bin/"
 
 # Install protobuf go plugin
 ENV GO111MODULE=on
-RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28.1
-RUN go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2.0
+RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.30.0
+RUN go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.3.0
 
 
 # =========  base stage ==========
@@ -56,10 +56,11 @@ COPY internal/ internal
 # Build protobuf
 RUN protoc \
     --proto_path=proto \
-    --go_out=internal \
-    --go-grpc_out=internal \
+    --go_out=paths=source_relative:internal/proto \
+    --go-grpc_out=paths=source_relative:internal/proto \
     --go-grpc_opt=require_unimplemented_servers=false \
-    proto/*.proto proto/v1/*.proto
+    --experimental_allow_proto3_optional \
+    proto/*.proto proto/**/*.proto
 
 
 # =========  server stage ==========
@@ -72,7 +73,7 @@ RUN GRPC_HEALTH_PROBE_VERSION=v0.4.7 && \
     chmod +x /bin/grpc_health_probe
 # Build binary
 COPY cmd/ cmd
-RUN go build -tags "sqlite_fts5" -o /go/bin/mixer cmd/main.go
+RUN go build -o /go/bin/mixer cmd/main.go
 ENTRYPOINT ["/go/bin/mixer"]
 
 
@@ -81,8 +82,8 @@ ENTRYPOINT ["/go/bin/mixer"]
 FROM base as test
 WORKDIR /mixer
 # Golint
-RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.49.0
-RUN ./bin/golangci-lint run --timeout=600s
+RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.52.2
+RUN ./bin/golangci-lint run --timeout=600s --skip-dirs='internal/proto'
 # Test
 COPY test/ test
 COPY deploy/ deploy

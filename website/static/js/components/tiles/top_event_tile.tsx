@@ -132,7 +132,13 @@ export const TopEventTile = memo(function TopEventTile(
                 <tr>
                   <td></td>
                   {showNameColumn && <td>Name</td>}
-                  {showPlaceColumn && <td>{props.enclosedPlaceType}</td>}
+                  {showPlaceColumn && (
+                    <td>
+                      {Object.keys(eventPlaces).length < topEvents.length
+                        ? "Location"
+                        : props.enclosedPlaceType}
+                    </td>
+                  )}
                   {(props.topEventMetadata.showStartDate ||
                     props.topEventMetadata.showEndDate) && <td>Date</td>}
                   {props.topEventMetadata.displayProp &&
@@ -148,7 +154,7 @@ export const TopEventTile = memo(function TopEventTile(
                 {topEvents.map((event, i) => {
                   const placeName = eventPlaces[event.placeDcid]
                     ? eventPlaces[event.placeDcid].name
-                    : "N/A";
+                    : props.place.name || props.place.dcid;
                   const displayDate = getDisplayDate(event);
                   return (
                     <tr key={i}>
@@ -281,7 +287,7 @@ export const TopEventTile = memo(function TopEventTile(
       .flatMap((event) => event.affectedPlaces)
       .forEach((place) => allAffectedPlaces.add(place));
     axios
-      .post<Record<string, string[]>>("/api/node/propvals", {
+      .post<Record<string, string[]>>("/api/node/propvals/out", {
         dcids: Array.from(allAffectedPlaces),
         prop: "typeOf",
       })
@@ -294,7 +300,11 @@ export const TopEventTile = memo(function TopEventTile(
         events.forEach((event) => {
           for (const place of event.affectedPlaces) {
             const placeTypes = resp.data[place] || [];
-            if (placeTypes.find((type) => type === props.enclosedPlaceType)) {
+            if (
+              placeTypes.find(
+                (item) => item["dcid"] === props.enclosedPlaceType
+              )
+            ) {
               eventPlaceDcids[event.placeDcid] = place;
               break;
             }
@@ -361,9 +371,10 @@ export const TopEventTile = memo(function TopEventTile(
     });
     embedModalElement.current.show(
       "",
-      rankingPointsToCsv(rankingPoints),
+      rankingPointsToCsv(rankingPoints, ["data"]),
       chartContainer.current.offsetWidth,
       0,
+      "",
       "",
       "",
       []

@@ -17,7 +17,7 @@ package info
 import (
 	"context"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/place"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -28,20 +28,19 @@ import (
 // PlaceInfo implements API for Mixer.PlaceInfo.
 func PlaceInfo(
 	ctx context.Context,
-	in *pb.PlaceInfoRequest,
+	in *pbv1.PlaceInfoRequest,
 	store *store.Store,
-) (*pb.PlaceInfoResponse, error) {
+) (*pbv1.PlaceInfoResponse, error) {
 	node := in.GetNode()
-	if !util.CheckValidDCIDs([]string{node}) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid node")
+	if err := util.CheckValidDCIDs([]string{node}); err != nil {
+		return nil, err
 	}
-
 	placeToMetadata, err := place.GetPlaceMetadataHelper(ctx, []string{node}, store)
 	if err != nil {
 		return nil, err
 	}
 
-	resp := &pb.PlaceInfoResponse{Node: node}
+	resp := &pbv1.PlaceInfoResponse{Node: node}
 	if metadata, ok := placeToMetadata[node]; ok {
 		resp.Info = metadata
 	}
@@ -52,25 +51,24 @@ func PlaceInfo(
 // BulkPlaceInfo implements API for Mixer.BulkPlaceInfo.
 func BulkPlaceInfo(
 	ctx context.Context,
-	in *pb.BulkPlaceInfoRequest,
+	in *pbv1.BulkPlaceInfoRequest,
 	store *store.Store,
-) (*pb.BulkPlaceInfoResponse, error) {
+) (*pbv1.BulkPlaceInfoResponse, error) {
 	nodes := in.GetNodes()
 	if len(nodes) == 0 {
 		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: nodes")
 	}
-	if !util.CheckValidDCIDs(nodes) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid nodes")
+	if err := util.CheckValidDCIDs(nodes); err != nil {
+		return nil, err
 	}
-
 	placeToMetadata, err := place.GetPlaceMetadataHelper(ctx, nodes, store)
 	if err != nil {
 		return nil, err
 	}
 
-	resp := &pb.BulkPlaceInfoResponse{}
+	resp := &pbv1.BulkPlaceInfoResponse{}
 	for _, node := range nodes {
-		item := &pb.PlaceInfoResponse{Node: node}
+		item := &pbv1.PlaceInfoResponse{Node: node}
 		if metadata, ok := placeToMetadata[node]; ok {
 			item.Info = metadata
 		}

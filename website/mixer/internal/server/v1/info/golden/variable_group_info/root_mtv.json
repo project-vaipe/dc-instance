@@ -35,7 +35,7 @@
         "id": "dc/g/Environment",
         "specializedEntity": "Environment",
         "displayName": "Environment",
-        "descendentStatVarCount": 57
+        "descendentStatVarCount": 40
       },
       {
         "id": "dc/g/Health",
@@ -47,7 +47,7 @@
         "id": "dc/g/Housing",
         "specializedEntity": "Housing",
         "displayName": "Housing",
-        "descendentStatVarCount": 416
+        "descendentStatVarCount": 422
       },
       {
         "id": "dc/g/Crime",
@@ -67,14 +67,10 @@
         "displayName": "Sustainable Development Goals"
       },
       {
-        "id": "sdg/g/SDG",
-        "displayName": "Sustainable Development Goals"
-      },
-      {
         "id": "g/Feeding_America",
         "specializedEntity": "Feeding America"
       }
     ],
-    "descendentStatVarCount": 11320
+    "descendentStatVarCount": 11326
   }
 }

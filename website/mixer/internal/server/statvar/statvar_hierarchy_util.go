@@ -31,13 +31,36 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
-// This should be synced with the list of blocklisted SVGs in the website repo
-var ignoredSvgIds = []string{"dc/g/Establishment_Industry", "eia/g/Root", "dc/g/Uncategorized"}
+// RemoveSvg removes the blocked svg from the in-memory entries.
+func RemoveSvg(
+	svgNodeMap map[string]*pb.StatVarGroupNode,
+	parentSvgMap map[string][]string,
+	svg string,
+) {
+	if node, ok := svgNodeMap[svg]; ok {
+		for _, child := range node.ChildStatVarGroups {
+			RemoveSvg(svgNodeMap, parentSvgMap, child.Id)
+		}
+	}
+	for _, parent := range parentSvgMap[svg] {
+		if node, ok := svgNodeMap[parent]; ok {
+			children := []*pb.StatVarGroupNode_ChildSVG{}
+			for _, child := range node.ChildStatVarGroups {
+				if child.Id != svg {
+					children = append(children, child)
+				}
+			}
+			node.ChildStatVarGroups = children
+		}
+	}
+	delete(svgNodeMap, svg)
+}
 
 // GetRawSvg gets the raw svg mapping.
 func GetRawSvg(ctx context.Context, store *store.Store) (
 	map[string]*pb.StatVarGroupNode, error) {
-	svg, err := GetStatVarGroup(ctx, &pb.GetStatVarGroupRequest{}, store, nil)
+	svg, err := GetStatVarGroup(
+		ctx, &pb.GetStatVarGroupRequest{}, store, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -124,7 +147,8 @@ func getSynonymMap() map[string][]string {
 // BuildStatVarSearchIndex builds the search index for the stat var hierarchy.
 func BuildStatVarSearchIndex(
 	rawSvg map[string]*pb.StatVarGroupNode,
-	parentSvg map[string][]string) *resource.SearchIndex {
+	parentSvg map[string][]string,
+	ignoredSvgIds []string) *resource.SearchIndex {
 	defer util.TimeTrack(time.Now(), "BuildStatVarSearchIndex")
 	// map of token to map of sv/svg id to ranking information.
 	searchIndex := &resource.SearchIndex{
@@ -134,6 +158,9 @@ func BuildStatVarSearchIndex(
 	ignoredSVG := map[string]string{}
 	// Exclude svg and sv under miscellaneous from the search index
 	for _, svgID := range ignoredSvgIds {
+		if svgID == "" {
+			continue
+		}
 		getIgnoredSVGHelper(ignoredSVG, rawSvg, svgID)
 	}
 	synonymMap := getSynonymMap()

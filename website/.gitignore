@@ -1,0 +1,64 @@
+# Python files
+__pycache__/
+.pytest_cache
+*.pyc
+.env/
+test_screenshots/
+
+# Production static files
+**/dist/**
+!server/dist/.empty
+
+**/node_modules/**
+
+# Local env.
+*.swp
+.vscode
+!.vscode/launch.json
+
+# Mac
+.DS_Store
+
+tmp/
+
+.air.toml
+
+# Kubernetes
+gke/config.yaml
+gke/endpoints.yaml
+gke/mci.yaml
+endpoints.yaml
+
+mixer-grpc.*.pb
+deploy/overlays/**/endpoints.yaml
+deploy/overlays/**/kustomize-build.yaml
+deploy/overlays/**/kustomize-deployed.yaml
+deploy/overlays/kustomization.yaml
+
+deploy/git/mixer_hash.txt
+deploy/git/website_hash.txt
+
+# Helm
+build/helm/**/*.tgz
+
+# Terraform
+# Local .terraform directories
+**/.terraform/*
+**/.terraform.lock.*
+# .tfstate files
+*.tfstate
+*.tfstate.*
+pylist.json
+
+pytest_log.txt
+
+
+tools/sdg/sdg.textproto
+tools/sdg/subject_page_pb2.py
+
+*diff_report.html
+
+# Experimental - ignore symbolic links
+experimental/sdg-static/datacommons/datacommons.js
+experimental/sdg-static/datacommons/ranking.min.css
+experimental/sdg-static/datacommons/nl_interface.min.css

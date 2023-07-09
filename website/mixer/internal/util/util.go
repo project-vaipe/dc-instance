@@ -224,25 +224,27 @@ func CamelToSnake(str string) string {
 }
 
 // CheckValidDCIDs checks if DCIDs are valid. More criteria will be added as being discovered.
-func CheckValidDCIDs(dcids []string) bool {
+func CheckValidDCIDs(dcids []string) error {
 	for _, dcid := range dcids {
 		if dcid == "" || strings.Contains(dcid, " ") || strings.Contains(dcid, ",") {
-			return false
+			return status.Errorf(
+				codes.InvalidArgument,
+				"CheckValidDCIDs failed with invalid node: %s", dcid)
 		}
 	}
-	return true
+	return nil
 }
 
 // RandomString creates a random string with 16 runes.
 func RandomString() string {
-	rand.Seed(time.Now().UnixNano())
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 	chars := []rune("ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
 		"abcdefghijklmnopqrstuvwxyz" +
 		"0123456789")
 	length := 16
 	var b strings.Builder
 	for i := 0; i < length; i++ {
-		b.WriteRune(chars[rand.Intn(len(chars))])
+		b.WriteRune(chars[r.Intn(len(chars))])
 	}
 	return b.String()
 }
@@ -434,9 +436,21 @@ func KeysToSlice(m map[string]bool) []string {
 	return s
 }
 
-// GetMetadataHash retrieves a hash string for a given protobuf message.
+// GetFacet derives the facet from a source series.
+func GetFacet(s *pb.SourceSeries) *pb.Facet {
+	return &pb.Facet{
+		ImportName:        s.ImportName,
+		MeasurementMethod: s.MeasurementMethod,
+		ObservationPeriod: s.ObservationPeriod,
+		ScalingFactor:     s.ScalingFactor,
+		Unit:              s.Unit,
+		ProvenanceUrl:     s.ProvenanceUrl,
+	}
+}
+
+// GetFacetID retrieves a hash string for a given protobuf message.
 // Note this should be restrict to a request scope.
-func GetMetadataHash(m *pb.StatMetadata) string {
+func GetFacetID(m *pb.Facet) string {
 	h := fnv.New32a()
 	_, _ = h.Write([]byte(strings.Join([]string{
 		m.ImportName,

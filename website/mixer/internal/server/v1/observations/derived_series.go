@@ -25,6 +25,7 @@ import (
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"google.golang.org/protobuf/proto"
@@ -33,10 +34,10 @@ import (
 // DerivedSeries implements API for Mixer.DerivedObservationsSeries.
 func DerivedSeries(
 	ctx context.Context,
-	in *pb.DerivedObservationsSeriesRequest,
+	in *pbv1.DerivedObservationsSeriesRequest,
 	store *store.Store,
-) (*pb.DerivedObservationsSeriesResponse, error) {
-	resp := &pb.DerivedObservationsSeriesResponse{}
+) (*pbv1.DerivedObservationsSeriesResponse, error) {
+	resp := &pbv1.DerivedObservationsSeriesResponse{}
 	entity := in.GetEntity()
 
 	// Parse the formula to extract all the variables, used for reading data from BT.
@@ -78,7 +79,7 @@ func DerivedSeries(
 
 // This implements the calculatorItem interface.
 type calcSeries struct {
-	statMetadata *pb.StatMetadata
+	facet *pb.Facet
 	// Sorted by date.
 	points []*pb.PointStat
 }
@@ -95,29 +96,29 @@ func (s *calcSeries) key() string {
 func extractSeriesCandidates(
 	btData interface{},
 	statVar string,
-	statMetadata *pb.StatMetadata,
+	facet *pb.Facet,
 ) ([]calcItem, error) {
 	entityData := btData.(map[string]*pb.ObsTimeSeries)
 	res := []calcItem{}
 
 	if obsTimeSeries, ok := entityData[statVar]; ok {
 		for _, sourceSeries := range obsTimeSeries.GetSourceSeries() {
-			if m := statMetadata.GetMeasurementMethod(); m != "" {
+			if m := facet.GetMeasurementMethod(); m != "" {
 				if m != sourceSeries.GetMeasurementMethod() {
 					continue
 				}
 			}
-			if p := statMetadata.GetObservationPeriod(); p != "" {
+			if p := facet.GetObservationPeriod(); p != "" {
 				if p != sourceSeries.GetObservationPeriod() {
 					continue
 				}
 			}
-			if u := statMetadata.GetUnit(); u != "" {
+			if u := facet.GetUnit(); u != "" {
 				if u != sourceSeries.GetUnit() {
 					continue
 				}
 			}
-			if s := statMetadata.GetScalingFactor(); s != "" {
+			if s := facet.GetScalingFactor(); s != "" {
 				if s != sourceSeries.GetScalingFactor() {
 					continue
 				}
@@ -176,19 +177,19 @@ func evalSeriesBinaryExpr(x, y calcItem, op token.Token) (calcItem, error) {
 //
 // The input `seriesCandidates` all have the same dates.
 func rankCalcSeries(seriesCandidates []calcItem) calcItem {
-	statMetadataKey := func(statMetadata *pb.StatMetadata) string {
+	facetKey := func(facet *pb.Facet) string {
 		return strings.Join([]string{
-			statMetadata.GetMeasurementMethod(),
-			statMetadata.GetObservationPeriod(),
-			statMetadata.GetUnit(),
-			statMetadata.GetScalingFactor()}, "-")
+			facet.GetMeasurementMethod(),
+			facet.GetObservationPeriod(),
+			facet.GetUnit(),
+			facet.GetScalingFactor()}, "-")
 	}
 
 	var res *calcSeries
 	var maxKey string
 	for _, series := range seriesCandidates {
 		s := series.(*calcSeries)
-		key := statMetadataKey(s.statMetadata)
+		key := facetKey(s.facet)
 		if maxKey == "" || maxKey < key {
 			maxKey = key
 			res = s
@@ -200,7 +201,7 @@ func rankCalcSeries(seriesCandidates []calcItem) calcItem {
 
 func toCalcSeries(sourceSeries *pb.SourceSeries) *calcSeries {
 	series := &calcSeries{
-		statMetadata: &pb.StatMetadata{
+		facet: &pb.Facet{
 			MeasurementMethod: sourceSeries.GetMeasurementMethod(),
 			ObservationPeriod: sourceSeries.GetObservationPeriod(),
 			Unit:              sourceSeries.GetUnit(),

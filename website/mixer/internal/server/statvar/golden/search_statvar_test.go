@@ -21,6 +21,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
@@ -28,14 +29,13 @@ import (
 )
 
 func TestSearchStatVar(t *testing.T) {
-	t.Parallel()
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(
 		path.Dir(filename), "search_statvar")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			query      string
 			places     []string
@@ -143,11 +143,13 @@ func TestSearchStatVar(t *testing.T) {
 
 	if err := test.TestDriver(
 		"SearchStatVar",
-		&test.TestOption{UseCache: true, SearchOptions: server.SearchOptions{
-			UseSearch:           true,
-			BuildSvgSearchIndex: true,
-			BuildSqliteIndex:    false,
-		}},
+		&test.TestOption{
+			UseCache: true,
+			SearchOptions: server.SearchOptions{
+				UseSearch:           true,
+				BuildSvgSearchIndex: true,
+			},
+		},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

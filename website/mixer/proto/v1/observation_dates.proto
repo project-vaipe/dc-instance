@@ -13,8 +13,9 @@
 // limitations under the License.
 
 syntax = "proto3";
-option go_package = "./proto";
 package datacommons.v1;
+
+option go_package = "github.com/datacommonsorg/mixer/internal/proto/v1";
 
 import "stat.proto";
 
@@ -53,5 +54,5 @@ message BulkObservationDatesLinkedRequest {
 
 message BulkObservationDatesLinkedResponse {
   repeated VariableObservationDates dates_by_variable = 1;
-  map<string, datacommons.StatMetadata> facets = 2;
+  map<string, datacommons.Facet> facets = 2;
 }

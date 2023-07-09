@@ -13,13 +13,13 @@
 # limitations under the License.
 """Utterance JSONs for tests."""
 
-from server.lib.nl.detection import ClassificationType
-from server.lib.nl.detection import EventType
-from server.lib.nl.detection import RankingType
-from server.lib.nl.utterance import ChartOriginType
-from server.lib.nl.utterance import ChartType
-from server.lib.nl.utterance import QueryType
-from server.lib.nl.utterance import TimeDeltaType
+from server.lib.nl.common.utterance import ChartOriginType
+from server.lib.nl.common.utterance import ChartType
+from server.lib.nl.common.utterance import QueryType
+from server.lib.nl.common.utterance import TimeDeltaType
+from server.lib.nl.detection.types import ClassificationType
+from server.lib.nl.detection.types import EventType
+from server.lib.nl.detection.types import RankingType
 
 # Utterance for Place Overview.
 SIMPLE_PLACE_ONLY_UTTR = {
@@ -197,7 +197,8 @@ SIMPLE_WITH_SV_EXT_UTTR = {
             'place_type': None,
             'ranking_types': [],
             'source_topic': '',
-            'title': ''
+            'title': '',
+            'orig_sv': 'Count_Person_Male',
         },
         'chart_type': ChartType.TIMELINE_CHART,
         'places': [{
@@ -305,7 +306,7 @@ COMPARISON_UTTR = {
         'country': 'country/USA',
     }],
     'query': 'foo sv in place',
-    'query_type': QueryType.COMPARISON,
+    'query_type': QueryType.COMPARISON_ACROSS_PLACES,
     'ranked_charts': [{
         'attr': {
             'block_id': 1,
@@ -428,7 +429,7 @@ CORRELATION_UTTR = {
     }],
     'places': [],
     'query': 'foo sv in place',
-    'query_type': QueryType.CORRELATION,
+    'query_type': QueryType.CORRELATION_ACROSS_VARS,
     'ranked_charts': [{
         'attr': {
             'block_id': 1,
@@ -471,6 +472,45 @@ CORRELATION_UTTR = {
         }],
         'event': None,
         'svs': ['Income_Farm', 'Mean_Precipitation']
+    }],
+    'svs': ['Mean_Precipitation'],
+    'session_id': '007_999999999',
+}
+
+# Utterance for multi-sv correlation.
+MULTISV_CORRELATION_UTTR = {
+    'classifications': [{
+        'type': ClassificationType.CORRELATION
+    }],
+    'places': [{
+        'country': 'country/USA',
+        'dcid': 'geoId/06',
+        'name': 'Foo Place',
+        'place_type': 'State'
+    }],
+    'query': 'foo sv in place',
+    'query_type': QueryType.CORRELATION_ACROSS_VARS,
+    'ranked_charts': [{
+        'attr': {
+            'block_id': 1,
+            'chart_type': 'scatter chart',
+            'class': ChartOriginType.PRIMARY_CHART,
+            'description': '',
+            'include_percapita': False,
+            'place_type': 'County',
+            'ranking_types': [],
+            'source_topic': '',
+            'title': ''
+        },
+        'chart_type': ChartType.SCATTER_CHART,
+        'places': [{
+            'dcid': 'geoId/06',
+            'name': 'Foo Place',
+            'place_type': 'State',
+            'country': 'country/USA',
+        }],
+        'event': None,
+        'svs': ['Prevalence_Obesity', 'Count_Poverty']
     }],
     'svs': ['Mean_Precipitation'],
     'session_id': '007_999999999',

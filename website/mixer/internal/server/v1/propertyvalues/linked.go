@@ -19,6 +19,7 @@ import (
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -29,9 +30,9 @@ import (
 // LinkedPropertyValues implements mixer.LinkedPropertyValues handler.
 func LinkedPropertyValues(
 	ctx context.Context,
-	in *pb.LinkedPropertyValuesRequest,
+	in *pbv1.LinkedPropertyValuesRequest,
 	store *store.Store,
-) (*pb.PropertyValuesResponse, error) {
+) (*pbv1.PropertyValuesResponse, error) {
 	nodeProperty := in.GetNodeProperty()
 	parts := strings.Split(nodeProperty, "/")
 	if len(parts) < 2 {
@@ -49,9 +50,8 @@ func LinkedPropertyValues(
 		return nil, status.Errorf(
 			codes.InvalidArgument, "missing argument: value_node_type")
 	}
-	if !util.CheckValidDCIDs([]string{node}) {
-		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid node %s", node)
+	if err := util.CheckValidDCIDs([]string{node}); err != nil {
+		return nil, err
 	}
 	resp, err := placein.GetPlacesIn(
 		ctx,
@@ -76,7 +76,7 @@ func LinkedPropertyValues(
 	if err != nil {
 		return nil, err
 	}
-	result := &pb.PropertyValuesResponse{}
+	result := &pbv1.PropertyValuesResponse{}
 	for _, dcid := range valueDcids {
 		var name string
 		if tmp, ok := data[dcid]["name"]; ok {
@@ -95,9 +95,9 @@ func LinkedPropertyValues(
 // BulkLinkedPropertyValues implements mixer.BulkLinkedPropertyValues handler.
 func BulkLinkedPropertyValues(
 	ctx context.Context,
-	in *pb.BulkLinkedPropertyValuesRequest,
+	in *pbv1.BulkLinkedPropertyValuesRequest,
 	store *store.Store,
-) (*pb.BulkPropertyValuesResponse, error) {
+) (*pbv1.BulkPropertyValuesResponse, error) {
 	property := in.GetProperty()
 	nodes := in.GetNodes()
 	valueNodeType := in.GetValueNodeType()
@@ -110,9 +110,8 @@ func BulkLinkedPropertyValues(
 		return nil, status.Errorf(
 			codes.InvalidArgument, "missing argument: value_node_type")
 	}
-	if !util.CheckValidDCIDs(nodes) {
-		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid nodes %s", nodes)
+	if err := util.CheckValidDCIDs(nodes); err != nil {
+		return nil, err
 	}
 	resp, err := placein.GetPlacesIn(
 		ctx,
@@ -140,7 +139,7 @@ func BulkLinkedPropertyValues(
 	if err != nil {
 		return nil, err
 	}
-	result := &pb.BulkPropertyValuesResponse{}
+	result := &pbv1.BulkPropertyValuesResponse{}
 	for _, n := range nodes {
 		children := resp[n]
 		oneNodeResult := &pb.NodePropertyValues{

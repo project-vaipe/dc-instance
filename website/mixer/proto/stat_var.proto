@@ -27,8 +27,9 @@
 // ========================================
 
 syntax = "proto3";
-option go_package = "./proto";
 package datacommons;
+
+option go_package = "github.com/datacommonsorg/mixer/internal/proto";
 
 import "entity.proto";
 
@@ -243,37 +244,4 @@ message SearchStatVarResponse {
   // A list of unique strings in the names of the results that match the search
   // tokens
   repeated string matches = 3;
-}
-
-message GetStatVarSummaryRequest {
-  // A list of stat var dcids
-  repeated string stat_vars = 1;
-}
-message GetStatVarSummaryResponse {
-  map<string, StatVarSummary> stat_var_summary = 1;
-}
-
-message GetStatVarMatchRequest {
-  // The user query.
-  string query = 1;
-  // Limit of the response entries.
-  // By default only the first 10 entries are returned.
-  int32 limit = 2;
-  // If true include debug explanation.
-  bool debug = 3;
-}
-
-message GetStatVarMatchResponse {
-  message MatchInfo {
-    // Stat Var ID.
-    string stat_var = 1;
-    // Stat Var display name.
-    string stat_var_name = 2;
-    // Score for this match.
-    double score = 3;
-    // Debug explanation of the score.
-    string explanation = 4;
-  }
-  // Ordered match list. Entry with larger match_count ranks at the beginning.
-  repeated MatchInfo match_info = 1;
 }

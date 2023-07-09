@@ -19,6 +19,7 @@ import (
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
 
@@ -29,9 +30,9 @@ import (
 // PropertyValues implements mixer.PropertyValues handler.
 func PropertyValues(
 	ctx context.Context,
-	in *pb.PropertyValuesRequest,
+	in *pbv1.PropertyValuesRequest,
 	store *store.Store,
-) (*pb.PropertyValuesResponse, error) {
+) (*pbv1.PropertyValuesResponse, error) {
 	nodeProperty := in.GetNodeProperty()
 	limit := int(in.GetLimit())
 	token := in.GetNextToken()
@@ -53,9 +54,8 @@ func PropertyValues(
 		return nil, status.Errorf(
 			codes.InvalidArgument, "uri should be /v1/property/out/ or /v1/property/in/")
 	}
-	if !util.CheckValidDCIDs([]string{node}) {
-		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid node %s", node)
+	if err := util.CheckValidDCIDs([]string{node}); err != nil {
+		return nil, err
 	}
 	data, pi, err := Fetch(
 		ctx,
@@ -76,7 +76,7 @@ func PropertyValues(
 			return nil, err
 		}
 	}
-	res := &pb.PropertyValuesResponse{
+	res := &pbv1.PropertyValuesResponse{
 		NextToken: nextToken,
 		Values:    MergeTypedNodes(data[node][property]),
 	}
@@ -86,13 +86,13 @@ func PropertyValues(
 // BulkPropertyValues implements mixer.BulkPropertyValues handler.
 func BulkPropertyValues(
 	ctx context.Context,
-	in *pb.BulkPropertyValuesRequest,
+	in *pbv1.BulkPropertyValuesRequest,
 	store *store.Store,
-) (*pb.BulkPropertyValuesResponse, error) {
+) (*pbv1.BulkPropertyValuesResponse, error) {
 	property := in.GetProperty()
 	nodes := in.GetNodes()
 	limit := int(in.GetLimit())
-	token := in.GetNextToken()
+	reqToken := in.GetNextToken()
 	direction := in.GetDirection()
 
 	// Check arguments
@@ -104,9 +104,8 @@ func BulkPropertyValues(
 		return nil, status.Errorf(
 			codes.InvalidArgument, "uri should be /v1/bulk/property/out/** or /v1/bulk/property/in/**")
 	}
-	if !util.CheckValidDCIDs(nodes) {
-		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid nodes: %s", nodes)
+	if err := util.CheckValidDCIDs(nodes); err != nil {
+		return nil, err
 	}
 	data, pi, err := Fetch(
 		ctx,
@@ -114,21 +113,21 @@ func BulkPropertyValues(
 		nodes,
 		[]string{property},
 		limit,
-		token,
+		reqToken,
 		direction,
 	)
 	if err != nil {
 		return nil, err
 	}
-	nextToken := ""
+	respToken := ""
 	if pi != nil {
-		nextToken, err = util.EncodeProto(pi)
+		respToken, err = util.EncodeProto(pi)
 		if err != nil {
 			return nil, err
 		}
 	}
-	res := &pb.BulkPropertyValuesResponse{
-		NextToken: nextToken,
+	res := &pbv1.BulkPropertyValuesResponse{
+		NextToken: respToken,
 	}
 	for _, n := range nodes {
 		res.Data = append(

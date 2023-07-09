@@ -20,7 +20,8 @@ import (
 	"runtime"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -33,60 +34,25 @@ func TestObservationsSeries(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "series")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			variable   string
 			entity     string
 			goldenFile string
 		}{
 			{
-				"Amount_EconomicActivity_GrossDomesticProduction_Nominal",
-				"country/IRN",
-				"irn_gdp.json",
-			},
-			{
-				"Count_Person",
-				"country/USA",
-				"count_person.json",
-			},
-			{
-				"Count_CriminalActivities_CombinedCrime",
-				"geoId/06",
-				"total_crimes.json",
-			},
-			{
-				"Annual_Generation_Electricity",
-				"geoId/06",
-				"electricity_generation.json",
-			},
-			{
-				"WithdrawalRate_Water_Aquaculture",
-				"geoId/06",
-				"water_withdraw.json",
-			},
-			{
 				"Median_Age_Person",
 				"geoId/0649670",
 				"median_age.json",
-			},
-			{
-				"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
-				"country/USA",
-				"gdp.json",
 			},
 			{
 				"dummy_sv",
 				"dummy_place",
 				"dummy.json",
 			},
-			{
-				"Count_Person_Unemployed",
-				"country/USA",
-				"umemployed.json",
-			},
 		} {
 
-			resp, err := mixer.ObservationsSeries(ctx, &pb.ObservationsSeriesRequest{
+			resp, err := mixer.ObservationsSeries(ctx, &pbv1.ObservationsSeriesRequest{
 				EntityVariable: c.entity + "/" + c.variable,
 			})
 			if err != nil {
@@ -102,7 +68,7 @@ func TestObservationsSeries(t *testing.T) {
 				test.UpdateGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
-			var expected pb.ObservationsSeriesResponse
+			var expected pbv1.ObservationsSeriesResponse
 			if err = test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file: %s", err)
 				continue

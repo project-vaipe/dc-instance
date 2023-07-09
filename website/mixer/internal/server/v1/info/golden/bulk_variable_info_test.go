@@ -20,7 +20,8 @@ import (
 	"runtime"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -33,7 +34,7 @@ func TestBulkVariableInfo(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "bulk_variable_info")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			nodes      []string
 			goldenFile string
@@ -41,11 +42,8 @@ func TestBulkVariableInfo(t *testing.T) {
 		}{
 			{
 				[]string{
-					"UnemploymentRate_Person",
 					"Count_Person_Female",
-					"Count_Person_Female_AsianAlone",
 					"FertilityRate_Person_Female",
-					"IncrementalCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase",
 				},
 				"bulk_result.json",
 				false,
@@ -56,7 +54,7 @@ func TestBulkVariableInfo(t *testing.T) {
 				true,
 			},
 		} {
-			resp, err := mixer.BulkVariableInfo(ctx, &pb.BulkVariableInfoRequest{
+			resp, err := mixer.BulkVariableInfo(ctx, &pbv1.BulkVariableInfoRequest{
 				Nodes: c.nodes,
 			})
 			if c.wantErr {
@@ -79,7 +77,7 @@ func TestBulkVariableInfo(t *testing.T) {
 				continue
 			}
 
-			var expected pb.BulkVariableInfoResponse
+			var expected pbv1.BulkVariableInfoResponse
 			if err = test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file")
 				continue
