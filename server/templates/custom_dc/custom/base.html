@@ -60,9 +60,8 @@
                </a>
              </div>
              {% endif %}
-             <a href="{{ url_for('static.homepage') }}">{{ NAME }}</a>
              {% if subpage_title %}
-             <span>
+             <span class="subpage_url_text">
                {% if subpage_url %}<a href="{{ subpage_url }}">{% endif %}
                  {{ subpage_title }}
                  {% if subpage_url %}</a>{% endif %}
@@ -72,7 +71,7 @@
            </div>
  
            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dc-main-nav">
-             <span class="navbar-toggler-icon"></span>
+             <span class="navbar-toggler-icon" id="navbar-toggler-custom"></span>
            </button>
  
            <div class="collapse navbar-collapse justify-content-md-end" id="dc-main-nav">
@@ -145,7 +144,7 @@
          </div>
        </nav>
      </header>
- 
+     
      <main id="{{ main_id }}" class="main-content">
        {% block content %}
        {% endblock %}
