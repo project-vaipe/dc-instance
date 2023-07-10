@@ -34,7 +34,7 @@
  <html lang={{ locale }} id={{ page_id }}>
  
  <head>
-   <title>{{ title }} - Custom Data Commons Commons</title>
+   <title>{{ title }} VietNam Data Commons </title>
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;600&family=Roboto&display=swap"
@@ -44,6 +44,7 @@
    {% endblock %}
    {% if OVERRIDE_CSS_PATH %}
    <link href="{{ OVERRIDE_CSS_PATH }}" rel="stylesheet">
+   <link rel="icon" href="{{ LOGO_PATH }}" type="image/icon type">
    {% endif %}
  </head>
  
@@ -71,7 +72,7 @@
            </div>
  
            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dc-main-nav">
-             <span class="navbar-toggler-icon" id="navbar-toggler-custom"></span>
+             <span class="navbar-toggler-icon"></span>
            </button>
  
            <div class="collapse navbar-collapse justify-content-md-end" id="dc-main-nav">

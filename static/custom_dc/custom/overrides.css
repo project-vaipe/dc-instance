@@ -109,14 +109,7 @@
   font-weight: 500;
   line-height: 21px;
   letter-spacing: 0em;
-  text-align: justified;
-
-  font-family: Inter;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 21px;
-  letter-spacing: 0em;
-  text-align: justified;
+  text-align: justify;
 }
 
 .container-1-1-content-title img {
@@ -261,7 +254,9 @@
 .about a {
   color: #2CB5C8 !important;
 }
-
+.about {
+  text-align: justify;
+}
 .text-color {
   color: #2CB5C8 !important;
 }

@@ -54,25 +54,32 @@ limitations under the License.
   <ul>
     {# TRANSLATORS: Heading for a list of cities in the US. See this message on https://datacommons.org/place #}
     <li><strong>{% trans %}Cities, Viet Nam{% endtrans %}</strong>
-      {% for dcid in [ 'wikidataId/Q1858', 'wikidataId/Q1854', 'wikidataId/Q25282', 'wikidataId/Q36866',
-      'wikidataId/Q1854'] %}
-      <a class="landing-link" href="{{ place_url(dcid) }}">{{ place_names[dcid] }}</a>
-      {%- if not loop.last %},{% endif -%}
-      {% endfor %}
+      <a class="landing-link" href="/place/wikidataId/Q1858">
+        Ha Noi</a>,
+      <a class="landing-link" href="/place/wikidataId/Q25282">
+        Da Nang</a>,
+      <a class="landing-link" href="/place/wikidataId/Q1854">
+        TP Ho Chi Minh</a>,...
     </li>
     {# TRANSLATORS: Heading for a list of counties in the US. See this message on https://datacommons.org/place #}
     <li><strong>{% trans %}Districts, Viet Nam{% endtrans %}</strong>
-      {% for dcid in ['wikidataId/Q1134523', 'wikidataId/Q1048642', 'wikidataId/Q2299149', 'wikidataId/Q5283266'] %}
-      <a class="landing-link" href="{{ place_url(dcid) }}">{{ place_names[dcid] }}</a>
-      {%- if not loop.last %},{% endif -%}
-      {% endfor %}
+      <a class="landing-link" href="place/wikidataId/Q1048642">
+        Tay Ho</a>,
+      <a class="landing-link" href="/place/wikidataId/Q1134529">
+        Hoan Kiem</a>,
+      <a class="landing-link" href="/place/wikidataId/Q1134523">
+        Hai Ba Trung</a>,...
     </li>
     {# TRANSLATORS: Heading for a list of countries. #}
     <li><strong>{% trans %}Countries{% endtrans %}</strong>
-      {% for dcid in ['country/VNM', 'country/CHN', 'country/SGP', 'country/MYS', 'country/MYS', 'country/LAO'] %}
-      <a class="landing-link" href="{{ place_url(dcid) }}">{{ place_names[dcid] }}</a>
-      {%- if not loop.last %},{% endif -%}
-      {% endfor %}
+      <a class="landing-link" href="/place/country/VNM">
+        Viet Nam</a>,
+      <a class="landing-link" href="/place/country/SGP">
+        Singapore</a>,
+      <a class="landing-link" href="place/country/THA">
+        Thailand</a>,
+      <a class="landing-link" href="/place/country/MMR">
+        Myanmar</a>,...
     </li>
   </ul>
 
