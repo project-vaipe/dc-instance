@@ -90,7 +90,7 @@
 }
 
 .container-1-1-content-title {
-  font-family: Inter;
+  font-family: 'Inter';
   font-size: 32px;
   font-weight: 700;
   line-height: 39px;
@@ -105,7 +105,7 @@
 }
 
 .container-1-1-content-content {
-  font-family: Inter;
+  font-family: 'Inter';
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
@@ -127,7 +127,7 @@
 
 .footer-custom a {
   color: #2CB5C8 !important;
-  font-family: Inter;
+  font-family: 'Inter';
   font-size: 14px;
   font-weight: 500;
   line-height: 28px;
@@ -136,7 +136,7 @@
 }
 
 .footer-custom h6 {
-  font-family: Inter;
+  font-family: 'Inter';
   font-size: 24px;
   font-weight: 700;
   line-height: 29px;
@@ -168,7 +168,7 @@
 
 .main-title-header {
   top: 212px;
-  font-family: Inter;
+  font-family: 'Inter';
   font-size: 48px;
   font-weight: 900;
   line-height: 58px;
@@ -183,7 +183,7 @@
   left: 404px;
   margin: auto;
   max-width: 558px;
-  font-family: Inter;
+  font-family: 'Inter';
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
@@ -230,7 +230,7 @@
   left: 113px;
   gap: 24px;
   padding: 20px;
-  font-family: Inter;
+  font-family: 'Inter';
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
@@ -262,7 +262,7 @@
   color: #2CB5C8 !important;
 }
 
-@media(max-width: 1000px) {
+@media(max-width: 950px) {
   .container-1-1 {
     flex-direction: column;
     margin-bottom: 30px;
