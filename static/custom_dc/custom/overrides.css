@@ -60,6 +60,8 @@
   color: #484848 !important;
   font-weight: 300 !important;
   margin-top: 400px;
+  margin-left: 113px;
+  margin-right: 113px;
 }
 
 .homepage-content-child {
@@ -72,11 +74,11 @@
   justify-content: space-between;
   align-items: center;
   padding: 30px 0;
-
 }
 
+
 .container-1-1-chart {
-  max-width: 45%;
+  max-width: 47%;
 }
 
 .container-1-1-chart img {
@@ -84,7 +86,7 @@
 }
 
 .container-1-1-content {
-  max-width: 45%;
+  max-width: 47%;
 }
 
 .container-1-1-content-title {
@@ -94,7 +96,6 @@
   line-height: 39px;
   letter-spacing: 0em;
   text-align: left;
-
   display: grid;
   margin-bottom: 20px;
 }
@@ -292,6 +293,11 @@
 
   .container-1-1-content {
     max-width: 100%;
+  }
+
+  .container-1 {
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
 }
