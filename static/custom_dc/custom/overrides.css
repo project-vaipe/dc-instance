@@ -73,7 +73,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 0;
+  margin: 20px;
 }
 
 
@@ -289,15 +289,26 @@
 
   .container-1-1-chart {
     max-width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
 
   .container-1-1-content {
     max-width: 100%;
   }
-
+  .container-1-1{
+    padding-bottom: 30px;
+  }
   .container-1 {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin: 0px;
+  }
+
+  .container-1-1 {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
   }
 
 }
